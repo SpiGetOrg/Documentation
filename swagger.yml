@@ -57,6 +57,28 @@ paths:
           $ref: "#/responses/resourceArray"
         404:
           $ref: "#/responses/notFound"
+  '/resources/{resource}/download':
+    get:
+      description: |
+        Download a resource
+      parameters:
+        - name: resource
+          type: string
+          description: Resource ID or Name
+          in: path
+          required: true
+      responses:
+        200:
+          description: File found
+          headers:
+            Content-Type:
+              description: Content type for the resource file (applicaation/octet-stream if unknown)
+              type: string
+            Content-Disposition:
+              description: Download information, including the file name
+              type: string
+        404:
+          description: Resource not found / File not Found
   '/resources/new':
     get:
       description: |
