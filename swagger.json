@@ -62,6 +62,49 @@
         }
       }
     },
+    "/resources/new" : {
+      "get" : {
+        "description" : "Get all new resources\n",
+        "parameters" : [ {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Resource Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Resource"
+              }
+            }
+          }
+        }
+      }
+    },
     "/resources/{resource}" : {
       "get" : {
         "description" : "Get a resource by its ID or name\n",
