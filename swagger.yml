@@ -1,0 +1,176 @@
+swagger: '2.0'
+
+info:
+  version: "2.0"
+  title: "Spiget"
+
+definitions:
+  Resource:
+    title: Resource
+    type: object
+    properties:
+      id:
+        type: number
+        format: integer
+        description: Id of the Resource
+      name:
+        type: string
+        description: Name of the Resource
+      tag:
+        type: string
+        description: Tag line of the Resource
+      contributors:
+        type: string
+        description: Contributors
+      likes:
+        type: number
+        format: integer
+        description: Number of likes
+      file:
+        $ref: "#/definitions/ResourceFile"
+      testedVersions:
+        type: array
+        items:
+            type: string
+      links:
+        type: object
+        description: Map of external and custom links in the resource description
+      rating:
+        $ref: "#/definitions/ResourceRating"
+      releaseDate:
+        type: number
+        format: long
+        description: Release timestamp
+      updateDate:
+        type: number
+        format: long
+        description: Update timestamp
+      downloads:
+        type: number
+        format: integer
+        description: Amount of downloads
+      external:
+        type: boolean
+        description: Whether this resource is external (not hosted on SpigotMC.org)
+      icon:
+        $ref: "#/definitions/Icon"
+  ResourceFile:
+    title: Resource File
+    type: object
+    properties:
+      type:
+        type: string
+        description: File extension (.jar, .zip, .sk)
+      size:
+        type: number
+        format: float
+        description: File size
+      sizeUnit:
+        type: string
+        description: File size-unit (KB, MB, GB)
+      url:
+        type: string
+        description: Relative URL to the file
+  Icon:
+    title: Resource Icon / Author Avatar
+    type: object
+    properties:
+      url:
+        type: string
+        description: Relative URL to the image
+      data:
+        type: string
+        description: Base64-Encoded image data
+  ResourceVersion:
+    title: Resource Version
+    type: object
+    properties:
+      name:
+        type: string
+        description: Version name (e.g. v1.0)
+      releaseDate:
+        type: number
+        format: long
+        description: Timestamp of the version's release date
+      downloads:
+        type: number
+        format: integer
+        description: Amount of downloads
+      rating:
+        $ref: "#/definitions/ResourceRating"
+      url:
+        type: string
+        description: Relative URL to the file
+  ResourceRating:
+    title: Resource Rating
+    type: object
+    properties:
+      count:
+        type: number
+        format: integer
+        description: Number of ratings
+      average:
+        type: number
+        format: float
+        description: Average rating
+  IdReference:
+    title: Id-Reference to another object
+    type: object
+    properties:
+      $id:
+        type: number
+        format: integer
+    
+  
+parameters:
+  sizeParam:
+    name: size
+    in: query
+    description: Size of the returned array
+    type: number
+    format: integer
+  pageParam:
+    name: page
+    in: query
+    description: Page index
+    type: number
+    format: integer
+  sortParam:
+    name: sort
+    in: query
+    description: Field to sort by
+    type: string
+  fieldsParam:
+    name: fields
+    in: query
+    description: Fields to return, separated by commas
+    type: string
+
+
+responses:
+  success:
+    description: Successful response
+  notFound:
+    description: Requested object not found
+  resourceArray:
+    description: Resource Array
+    schema:
+      type: array
+      items:
+        $ref: "#/definitions/Resource"
+
+
+paths:
+  /resources:
+    get:
+      description: |
+        Get a list of available resources
+      parameters:
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/resourceArray"
+        
