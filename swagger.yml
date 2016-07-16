@@ -11,7 +11,10 @@ info:
     url: https://inventivetalent.org/contact
     email: info@inventivetalent.org
 
-host: "https://api.spiget.org"
+schemes:
+  - https
+  - http
+host: "api.spiget.org"
 basePath: "/v2"
 
 definitions:
