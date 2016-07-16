@@ -69,7 +69,30 @@ paths:
       responses:
         200:
           $ref: "#/responses/resourceArray"
-
+  '/resources/for/{version}':
+    get:
+      description: |
+        Get resources for the specified version(s)
+      parameters:
+        - name: version
+          type: string
+          description: Version(s), separated by commas
+          in: path
+          required: true
+        - name: method
+          type: string
+          enum:
+            - any
+            - all
+          description: Method to use to check for versions
+          in: query
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/resourceArray"
 
 definitions:
   Resource:
