@@ -17,6 +17,12 @@ schemes:
 host: "api.spiget.org"
 basePath: "/v2"
 
+produces: 
+  - application/json
+consumes: 
+  - application/json
+  
+
 definitions:
   Resource:
     title: Resource
