@@ -3,6 +3,13 @@ swagger: '2.0'
 info:
   version: "2.0"
   title: "Spiget"
+  license:
+    name: Apache License 2.0
+    url: https://github.com/SpiGetOrg/Spiget/blob/master/LICENSE.md
+  contact:
+    name: inventivetalent
+    url: https://inventivetalent.org/contact
+    email: info@inventivetalent.org
 
 host: "https://api.spiget.org"
 basePath: "/v2"
