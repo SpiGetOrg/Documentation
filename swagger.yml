@@ -57,6 +57,18 @@ paths:
           $ref: "#/responses/resourceArray"
         404:
           $ref: "#/responses/notFound"
+  '/resources/new':
+    get:
+      description: |
+        Get all new resources
+      parameters:
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/resourceArray"
 
 
 definitions:
