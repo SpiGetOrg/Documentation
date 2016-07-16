@@ -23,6 +23,42 @@ consumes:
   - application/json
   
 
+
+
+paths:
+  '/resources':
+    get:
+      description: |
+        Get a list of available resources
+      parameters:
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/resourceArray"
+  '/resources/{resource}':
+    get:
+      description: |
+        Get a resource by its ID or name
+      parameters:
+        - name: resource
+          type: string
+          description: Resource ID or Name
+          in: path
+          required: true
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/resourceArray"
+        404:
+          $ref: "#/responses/notFound"
+
+
 definitions:
   Resource:
     title: Resource
@@ -179,17 +215,4 @@ responses:
         $ref: "#/definitions/Resource"
 
 
-paths:
-  /resources:
-    get:
-      description: |
-        Get a list of available resources
-      parameters:
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
-      responses:
-        200:
-          $ref: "#/responses/resourceArray"
         
