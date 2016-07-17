@@ -243,6 +243,27 @@ definitions:
         type: number
         format: float
         description: Average rating
+  ResourceReview:
+    title: Resource Review
+    type: object
+    properties:
+      author:
+        $ref: "#/definitions/Author"
+      rating:
+        $ref: "#/definitions/ResourceRating"
+      message:
+        type: string
+        description: Base64-Encoded Review message
+      responseMessage:
+        type: string
+        description: Base64-Encoded message the author responded with
+      version:
+        type: string
+        description: Version name the review was posted for
+      date:
+        type: number
+        format: long
+        description: Review timestamp
   Author:
     title: Author
     type: object
