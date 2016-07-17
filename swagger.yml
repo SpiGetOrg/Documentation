@@ -213,6 +213,24 @@ definitions:
       url:
         type: string
         description: Relative URL to the file
+  ResourceUpdate:
+    title: Resource Update
+    type: object
+    properties:
+      title:
+        type: string
+        description: Update title
+      description:
+        type: string
+        description: Base64-Encoded description of the update
+      date:
+        type: number
+        format: long
+        description: Update timestamp
+      likes:
+        type: number
+        format: integer
+        description: Amount of likes for this update
   ResourceRating:
     title: Resource Rating
     type: object
