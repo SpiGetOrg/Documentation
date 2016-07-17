@@ -225,6 +225,22 @@ definitions:
         type: number
         format: float
         description: Average rating
+  Author:
+    title: Author
+    type: object
+    properties:
+      name:
+        type: string
+        description: Author name
+      icon:
+        $ref: "#/definitions/Icon"
+  Category:
+    title: Category
+    type: object
+    properties:
+      name:
+        type: string
+        description: Category name
   IdReference:
     title: Id-Reference to another object
     type: object
