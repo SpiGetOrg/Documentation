@@ -308,6 +308,12 @@
         },
         "icon" : {
           "$ref" : "#/definitions/Icon"
+        },
+        "reviews" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ResourceReview"
+          }
         }
       },
       "title" : "Resource"
@@ -376,6 +382,30 @@
       },
       "title" : "Resource Version"
     },
+    "ResourceUpdate" : {
+      "type" : "object",
+      "properties" : {
+        "title" : {
+          "type" : "string",
+          "description" : "Update title"
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "Base64-Encoded description of the update"
+        },
+        "date" : {
+          "type" : "number",
+          "format" : "long",
+          "description" : "Update timestamp"
+        },
+        "likes" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Amount of likes for this update"
+        }
+      },
+      "title" : "Resource Update"
+    },
     "ResourceRating" : {
       "type" : "object",
       "properties" : {
@@ -391,6 +421,58 @@
         }
       },
       "title" : "Resource Rating"
+    },
+    "ResourceReview" : {
+      "type" : "object",
+      "properties" : {
+        "author" : {
+          "$ref" : "#/definitions/Author"
+        },
+        "rating" : {
+          "$ref" : "#/definitions/ResourceRating"
+        },
+        "message" : {
+          "type" : "string",
+          "description" : "Base64-Encoded Review message"
+        },
+        "responseMessage" : {
+          "type" : "string",
+          "description" : "Base64-Encoded message the author responded with"
+        },
+        "version" : {
+          "type" : "string",
+          "description" : "Version name the review was posted for"
+        },
+        "date" : {
+          "type" : "number",
+          "format" : "long",
+          "description" : "Review timestamp"
+        }
+      },
+      "title" : "Resource Review"
+    },
+    "Author" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "Author name"
+        },
+        "icon" : {
+          "$ref" : "#/definitions/Icon"
+        }
+      },
+      "title" : "Author"
+    },
+    "Category" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "Category name"
+        }
+      },
+      "title" : "Category"
     },
     "IdReference" : {
       "type" : "object",
