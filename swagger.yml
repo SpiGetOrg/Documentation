@@ -166,6 +166,10 @@ definitions:
         description: Whether this resource is external (not hosted on SpigotMC.org)
       icon:
         $ref: "#/definitions/Icon"
+      reviews:
+        type: array
+        items:
+          $ref: "#/definitions/ResourceReview"
   ResourceFile:
     title: Resource File
     type: object
