@@ -22,6 +22,7 @@
     "/authors" : {
       "get" : {
         "tags" : [ "authors" ],
+        "summary" : "Author List",
         "description" : "Get a list of available authors\nNote: This only includes members involved with resources, either being their author or having reviewed a resource\n",
         "parameters" : [ {
           "name" : "size",
@@ -66,6 +67,7 @@
     "/authors/{author}" : {
       "get" : {
         "tags" : [ "authors" ],
+        "summary" : "Author Details",
         "description" : "Get details about an author\n",
         "parameters" : [ {
           "name" : "author",
@@ -87,6 +89,7 @@
     "/authors/{author}/resources" : {
       "get" : {
         "tags" : [ "authors" ],
+        "summary" : "Author resources",
         "description" : "Get an author's resources\n",
         "parameters" : [ {
           "name" : "author",
@@ -137,6 +140,7 @@
     "/resources" : {
       "get" : {
         "tags" : [ "resources" ],
+        "summary" : "Resource List",
         "description" : "Get a list of available resources\n",
         "parameters" : [ {
           "name" : "size",
@@ -181,6 +185,7 @@
     "/resources/for/{version}" : {
       "get" : {
         "tags" : [ "resources" ],
+        "summary" : "Resources for Versions",
         "description" : "Get resources for the specified version(s)\n",
         "parameters" : [ {
           "name" : "version",
@@ -238,6 +243,7 @@
     "/resources/new" : {
       "get" : {
         "tags" : [ "resources" ],
+        "summary" : "New Resources",
         "description" : "Get all new resources\n",
         "parameters" : [ {
           "name" : "size",
@@ -282,6 +288,7 @@
     "/resources/{resource}" : {
       "get" : {
         "tags" : [ "resources" ],
+        "summary" : "Resource Details",
         "description" : "Get a resource by its ID or name\n",
         "parameters" : [ {
           "name" : "resource",
@@ -306,6 +313,7 @@
     "/resources/{resource}/author" : {
       "get" : {
         "tags" : [ "resources" ],
+        "summary" : "Resource Author",
         "description" : "Get the resource author\n",
         "parameters" : [ {
           "name" : "resource",
@@ -327,6 +335,7 @@
     "/resources/{resource}/download" : {
       "get" : {
         "tags" : [ "resources" ],
+        "summary" : "Resource Download",
         "description" : "Download a resource\n",
         "parameters" : [ {
           "name" : "resource",
@@ -358,6 +367,7 @@
     "/status" : {
       "get" : {
         "tags" : [ "status" ],
+        "summary" : "API Status",
         "description" : "Get the API status\n",
         "parameters" : [ ],
         "responses" : {
