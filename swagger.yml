@@ -208,7 +208,22 @@ paths:
       responses:
         200:
           $ref: "#/responses/authorArray"
-          
+  '/authors/{author}':
+    get:
+      description: |
+        Get details about an author
+      parameters:
+        - name: author
+          type: string
+          description: Author ID or Name
+          in: path
+          required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Author"
+            
           
 definitions:
   Resource:
