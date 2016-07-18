@@ -242,6 +242,20 @@
           }
         }
       }
+    },
+    "/status" : {
+      "get" : {
+        "description" : "Get the API status\n",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200"
+            }
+          }
+        }
+      }
     }
   },
   "definitions" : {
@@ -483,6 +497,101 @@
         }
       },
       "title" : "Id-Reference to another object"
+    },
+    "inline_response_200_stats" : {
+      "properties" : {
+        "resource_versions" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Resource version count"
+        },
+        "resource_updates" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Resource update count"
+        },
+        "resources" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Resource count"
+        },
+        "categories" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Category count"
+        },
+        "authors" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Author count"
+        }
+      },
+      "description" : "API stats"
+    },
+    "inline_response_200_status_fetch_page_item" : {
+      "properties" : {
+        "index" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Resource index on the current page"
+        }
+      }
+    },
+    "inline_response_200_status_fetch_page" : {
+      "properties" : {
+        "amount" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Amount of pages to load"
+        },
+        "item" : {
+          "$ref" : "#/definitions/inline_response_200_status_fetch_page_item"
+        },
+        "index" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Current page index"
+        }
+      }
+    },
+    "inline_response_200_status_fetch" : {
+      "properties" : {
+        "start" : {
+          "type" : "number",
+          "format" : "long",
+          "description" : "Timestamp of the last fetcher start"
+        },
+        "active" : {
+          "type" : "boolean",
+          "description" : "Whether the fetcher is currently active"
+        },
+        "end" : {
+          "type" : "number",
+          "format" : "long",
+          "description" : "Timestamp of the last fetcher end (0 if currently active)"
+        },
+        "page" : {
+          "$ref" : "#/definitions/inline_response_200_status_fetch_page"
+        }
+      }
+    },
+    "inline_response_200_status" : {
+      "properties" : {
+        "fetch" : {
+          "$ref" : "#/definitions/inline_response_200_status_fetch"
+        }
+      },
+      "description" : "Status overview"
+    },
+    "inline_response_200" : {
+      "properties" : {
+        "stats" : {
+          "$ref" : "#/definitions/inline_response_200_stats"
+        },
+        "status" : {
+          "$ref" : "#/definitions/inline_response_200_status"
+        }
+      }
     }
   },
   "parameters" : {
