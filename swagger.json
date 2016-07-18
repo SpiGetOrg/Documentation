@@ -137,6 +137,124 @@
         }
       }
     },
+    "/categories" : {
+      "get" : {
+        "tags" : [ "categories" ],
+        "summary" : "Category List",
+        "description" : "Get a list of categories\n",
+        "parameters" : [ {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Category Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Category"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{category}" : {
+      "get" : {
+        "tags" : [ "categories" ],
+        "summary" : "Category Details",
+        "description" : "Get details about a category\n",
+        "parameters" : [ {
+          "name" : "category",
+          "in" : "path",
+          "description" : "Category ID or Name",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/Category"
+            }
+          }
+        }
+      }
+    },
+    "/categories/{category}/resources" : {
+      "get" : {
+        "tags" : [ "categories" ],
+        "summary" : "Category Resources",
+        "description" : "Get the resources in a category\n",
+        "parameters" : [ {
+          "name" : "category",
+          "in" : "path",
+          "description" : "Category ID or Name",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Resource Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Resource"
+              }
+            }
+          }
+        }
+      }
+    },
     "/resources" : {
       "get" : {
         "tags" : [ "resources" ],
@@ -776,6 +894,15 @@
         "type" : "array",
         "items" : {
           "$ref" : "#/definitions/Author"
+        }
+      }
+    },
+    "categoryArray" : {
+      "description" : "Category Array",
+      "schema" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/definitions/Category"
         }
       }
     },
