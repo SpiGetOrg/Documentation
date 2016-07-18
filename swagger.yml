@@ -126,6 +126,21 @@ paths:
           $ref: "#/responses/resourceArray"
         404:
           $ref: "#/responses/notFound"
+  '/resources/{resource}/author':
+    get:
+      description: |
+        Get the resource author
+      parameters:
+        - name: resource
+          type: string
+          description: Resource ID or Name
+          in: path
+          required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Author"
   '/resources/{resource}/download':
     get:
       description: |
