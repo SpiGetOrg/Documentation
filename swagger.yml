@@ -293,6 +293,25 @@ paths:
           description: OK
           schema:
             $ref: "#/definitions/Category"
+  '/categories/{category}/resources':
+    get:
+      tags: ["categories"]
+      summary: Category Resources
+      description: |
+        Get the resources in a category
+      parameters:
+        - name: category
+          type: string
+          description: Category ID or Name
+          in: path
+          required: true
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/resourceArray"
           
             
           
