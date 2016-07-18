@@ -276,6 +276,23 @@ paths:
       responses:
         200:
           $ref: "#/responses/categoryArray"
+  '/categories/{category}':
+    get:
+      tags: ["categories"]
+      summary: Category Details
+      description: |
+        Get details about a category
+      parameters:
+        - name: category
+          type: string
+          description: Category ID or Name
+          in: path
+          required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Category"
           
             
           
