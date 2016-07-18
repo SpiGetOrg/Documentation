@@ -117,10 +117,6 @@ paths:
           description: Resource ID or Name
           in: path
           required: true
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
       responses:
         200:
           $ref: "#/responses/resourceArray"
