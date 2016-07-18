@@ -119,7 +119,9 @@ paths:
           required: true
       responses:
         200:
-          $ref: "#/responses/resourceArray"
+          description: OK
+          schema:
+            $ref: "#/definitions/Resource"
         404:
           $ref: "#/responses/notFound"
   '/resources/{resource}/author':
