@@ -225,6 +225,24 @@ paths:
           description: OK
           schema:
             $ref: "#/definitions/Author"
+  '/authors/{author}/resources':
+    get:
+      description: |
+        Get an author's resources
+      parameters:
+        - name: author
+          type: string
+          description: Author ID or Name
+          in: path
+          required: true
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/resourceArray"
+          
             
           
 definitions:
