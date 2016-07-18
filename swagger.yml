@@ -28,6 +28,7 @@ consumes:
 paths:
   '/status':
     get:
+      tags: ["status"]
       description: |
         Get the API status
       responses:
@@ -97,6 +98,7 @@ paths:
                     format: integer
   '/resources':
     get:
+      tags: ["resources"]
       description: |
         Get a list of available resources
       parameters:
@@ -109,6 +111,7 @@ paths:
           $ref: "#/responses/resourceArray"
   '/resources/{resource}':
     get:
+      tags: ["resources"]
       description: |
         Get a resource by its ID or name
       parameters:
@@ -126,6 +129,7 @@ paths:
           $ref: "#/responses/notFound"
   '/resources/{resource}/author':
     get:
+      tags: ["resources"]
       description: |
         Get the resource author
       parameters:
@@ -141,6 +145,7 @@ paths:
             $ref: "#/definitions/Author"
   '/resources/{resource}/download':
     get:
+      tags: ["resources"]
       description: |
         Download a resource
       parameters:
@@ -163,6 +168,7 @@ paths:
           description: Resource not found / File not Found
   '/resources/new':
     get:
+      tags: ["resources"]
       description: |
         Get all new resources
       parameters:
@@ -175,6 +181,7 @@ paths:
           $ref: "#/responses/resourceArray"
   '/resources/for/{version}':
     get:
+      tags: ["resources"]
       description: |
         Get resources for the specified version(s)
       parameters:
@@ -199,6 +206,7 @@ paths:
           $ref: "#/responses/resourceArray"
   '/authors':
     get:
+      tags: ["authors"]
       description: |
         Get a list of available authors
         Note: This only includes members involved with resources, either being their author or having reviewed a resource
@@ -212,6 +220,7 @@ paths:
           $ref: "#/responses/authorArray"
   '/authors/{author}':
     get:
+      tags: ["authors"]
       description: |
         Get details about an author
       parameters:
@@ -227,6 +236,7 @@ paths:
             $ref: "#/definitions/Author"
   '/authors/{author}/resources':
     get:
+      tags: ["authors"]
       description: |
         Get an author's resources
       parameters:
