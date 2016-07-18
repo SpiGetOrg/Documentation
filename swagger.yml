@@ -184,7 +184,21 @@ paths:
       responses:
         200:
           $ref: "#/responses/resourceArray"
-
+  '/authors':
+    get:
+      description: |
+        Get a list of available authors
+        Note: This only includes members involved with resources, either being their author or having reviewed a resource
+      parameters:
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/authorArray"
+          
+          
 definitions:
   Resource:
     title: Resource
@@ -398,6 +412,12 @@ responses:
       type: array
       items:
         $ref: "#/definitions/Resource"
+  authorArray:
+    description: Author Array
+    schema:
+      type: array
+      items:
+        $ref: "#/definitions/Author"
 
 
         
