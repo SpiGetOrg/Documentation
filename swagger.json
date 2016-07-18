@@ -19,6 +19,118 @@
   "consumes" : [ "application/json" ],
   "produces" : [ "application/json" ],
   "paths" : {
+    "/authors" : {
+      "get" : {
+        "description" : "Get a list of available authors\nNote: This only includes members involved with resources, either being their author or having reviewed a resource\n",
+        "parameters" : [ {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Author Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Author"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/authors/{author}" : {
+      "get" : {
+        "description" : "Get details about an author\n",
+        "parameters" : [ {
+          "name" : "author",
+          "in" : "path",
+          "description" : "Author ID or Name",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/Author"
+            }
+          }
+        }
+      }
+    },
+    "/authors/{author}/resources" : {
+      "get" : {
+        "description" : "Get an author's resources\n",
+        "parameters" : [ {
+          "name" : "author",
+          "in" : "path",
+          "description" : "Author ID or Name",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Resource Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Resource"
+              }
+            }
+          }
+        }
+      }
+    },
     "/resources" : {
       "get" : {
         "description" : "Get a list of available resources\n",
@@ -170,45 +282,36 @@
           "description" : "Resource ID or Name",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "size",
-          "in" : "query",
-          "description" : "Size of the returned array",
-          "required" : false,
-          "type" : "number",
-          "format" : "integer"
-        }, {
-          "name" : "page",
-          "in" : "query",
-          "description" : "Page index",
-          "required" : false,
-          "type" : "number",
-          "format" : "integer"
-        }, {
-          "name" : "sort",
-          "in" : "query",
-          "description" : "Field to sort by",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "fields",
-          "in" : "query",
-          "description" : "Fields to return, separated by commas",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "Resource Array",
+            "description" : "OK",
             "schema" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/definitions/Resource"
-              }
+              "$ref" : "#/definitions/Resource"
             }
           },
           "404" : {
             "description" : "Requested object not found"
+          }
+        }
+      }
+    },
+    "/resources/{resource}/author" : {
+      "get" : {
+        "description" : "Get the resource author\n",
+        "parameters" : [ {
+          "name" : "resource",
+          "in" : "path",
+          "description" : "Resource ID or Name",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/Author"
+            }
           }
         }
       }
@@ -372,6 +475,11 @@
     "ResourceVersion" : {
       "type" : "object",
       "properties" : {
+        "id" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Version ID"
+        },
         "name" : {
           "type" : "string",
           "description" : "Version name (e.g. v1.0)"
@@ -399,6 +507,11 @@
     "ResourceUpdate" : {
       "type" : "object",
       "properties" : {
+        "id" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Update ID"
+        },
         "title" : {
           "type" : "string",
           "description" : "Update title"
@@ -468,6 +581,11 @@
     "Author" : {
       "type" : "object",
       "properties" : {
+        "id" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Id of the author"
+        },
         "name" : {
           "type" : "string",
           "description" : "Author name"
@@ -481,6 +599,11 @@
     "Category" : {
       "type" : "object",
       "properties" : {
+        "id" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Category ID"
+        },
         "name" : {
           "type" : "string",
           "description" : "Category name"
@@ -627,6 +750,15 @@
     }
   },
   "responses" : {
+    "authorArray" : {
+      "description" : "Author Array",
+      "schema" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/definitions/Author"
+        }
+      }
+    },
     "notFound" : {
       "description" : "Requested object not found"
     },
