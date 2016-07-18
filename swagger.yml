@@ -29,6 +29,7 @@ paths:
   '/status':
     get:
       tags: ["status"]
+      summary: API Status
       description: |
         Get the API status
       responses:
@@ -99,6 +100,7 @@ paths:
   '/resources':
     get:
       tags: ["resources"]
+      summary: Resource List
       description: |
         Get a list of available resources
       parameters:
@@ -112,6 +114,7 @@ paths:
   '/resources/{resource}':
     get:
       tags: ["resources"]
+      summary: Resource Details
       description: |
         Get a resource by its ID or name
       parameters:
@@ -130,6 +133,7 @@ paths:
   '/resources/{resource}/author':
     get:
       tags: ["resources"]
+      summary: Resource Author
       description: |
         Get the resource author
       parameters:
@@ -146,6 +150,7 @@ paths:
   '/resources/{resource}/download':
     get:
       tags: ["resources"]
+      summary: Resource Download
       description: |
         Download a resource
       parameters:
@@ -169,6 +174,7 @@ paths:
   '/resources/new':
     get:
       tags: ["resources"]
+      summary: New Resources
       description: |
         Get all new resources
       parameters:
@@ -182,6 +188,7 @@ paths:
   '/resources/for/{version}':
     get:
       tags: ["resources"]
+      summary: Resources for Versions
       description: |
         Get resources for the specified version(s)
       parameters:
@@ -207,6 +214,7 @@ paths:
   '/authors':
     get:
       tags: ["authors"]
+      summary: Author List
       description: |
         Get a list of available authors
         Note: This only includes members involved with resources, either being their author or having reviewed a resource
@@ -221,6 +229,7 @@ paths:
   '/authors/{author}':
     get:
       tags: ["authors"]
+      summary: Author Details
       description: |
         Get details about an author
       parameters:
@@ -237,6 +246,7 @@ paths:
   '/authors/{author}/resources':
     get:
       tags: ["authors"]
+      summary: Author resources
       description: |
         Get an author's resources
       parameters:
