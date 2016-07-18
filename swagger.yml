@@ -26,6 +26,75 @@ consumes:
 
 
 paths:
+  '/status':
+    get:
+      description: |
+        Get the API status
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              status:
+                description: Status overview
+                type: object
+                properties:
+                  fetch:
+                    type: object
+                    properties:
+                      start:
+                        description: Timestamp of the last fetcher start
+                        type: number
+                        format: long
+                      end:
+                        description: Timestamp of the last fetcher end (0 if currently active)
+                        type: number
+                        format: long
+                      active:
+                        description: Whether the fetcher is currently active
+                        type: boolean
+                      page:
+                        type: object
+                        properties:
+                          amount:
+                            description: Amount of pages to load
+                            type: number
+                            format: integer
+                          index:
+                            description: Current page index
+                            type: number
+                            format: integer
+                          item:
+                            type: object
+                            properties:
+                              index:
+                                description: Resource index on the current page
+                                type: number
+                                format: integer
+              stats:
+                description: API stats
+                type: object
+                properties:
+                  resources:
+                    description: Resource count
+                    type: number
+                    format: integer
+                  authors:
+                    description: Author count
+                    type: number
+                    format: integer
+                  categories:
+                    description: Category count
+                    type: number
+                    format: integer
+                  resource_updates:
+                    description: Resource update count
+                    type: number
+                    format: integer
+                  resource_versions:
+                    description: Resource version count
+                    type: number
+                    format: integer
   '/resources':
     get:
       description: |
