@@ -262,6 +262,20 @@ paths:
       responses:
         200:
           $ref: "#/responses/resourceArray"
+  '/categories':
+    get:
+      tags: ["categories"]
+      summary: Category List
+      description: |
+        Get a list of categories
+      parameters:
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/categoryArray"
           
             
           
@@ -500,6 +514,12 @@ responses:
       type: array
       items:
         $ref: "#/definitions/Author"
+  categoryArray:
+    description: Category Array
+    schema:
+      type: array
+      items:
+        $ref: "#/definitions/Category"
 
 
         
