@@ -350,7 +350,113 @@ paths:
       responses:
         200:
           $ref: "#/responses/resourceArray"
-          
+  '/webhook/events':
+    get:
+      tags: ["webhook"]
+      summary: Webhook events
+      description: |
+        Get a list of available events
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              events:
+                description: Events
+                type: array
+                items:
+                  type: string
+  '/webhook/register':
+    post:
+      tags: ["webhook"]
+      summary: Register Webhook
+      description: |
+        Register a new Webhook
+      parameters:
+        - name: info
+          in: body
+          description: Webhook information
+          required: true
+          schema:
+            type: object
+            properties:
+              url:
+                type: string
+                description: URL to call
+              events:
+                type: array
+                description: Events to register
+                items:
+                  type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                description: ID of the registered Webhook
+              secret:
+                type: string
+                description: Registration secret
+        400:
+          description: Invalid request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Error message
+  '/webhook/status/{id}':
+    get:
+      tags: ["webhook"]
+      summary: Webhook Status
+      description: |
+        Get the status of a Webhook
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the Webhook
+          required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              status:
+                type: number
+                format: integer
+                description: Status id
+              failedConnections:
+                type: number
+                format: integer
+                description: Amount of failed connections
+  '/webhook/delete/{id}/{secret}':
+    delete:
+      tags: ["webhook"]
+      summary: Delete Webhook
+      description: |
+        Delete a Webhook
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: Webhook ID
+          required: true
+        - name: secret
+          in: path
+          type: string
+          description: Webhook Secret
+          required: true
+      responses:
+        200:
+          description: OK
+        404:
+          $ref: "#/responses/notFound"
             
           
 definitions:
