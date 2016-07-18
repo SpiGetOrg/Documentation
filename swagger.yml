@@ -171,6 +171,25 @@ paths:
               type: string
         404:
           description: Resource not found / File not Found
+  '/resources/{resource}/versions':
+    get:
+      tags: ["resources"]
+      summary: Resource Versions
+      description: |
+        Get versions of a resource
+      parameters:
+        - name: resource
+          type: string
+          description: Resource ID or Name
+          in: path
+          required: true
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/versionArray"
   '/resources/new':
     get:
       tags: ["resources"]
@@ -556,6 +575,12 @@ responses:
       type: array
       items:
         $ref: "#/definitions/Category"
+  versionArray:
+    description: Version Array
+    schema:
+      type: array
+      items:
+        $ref: "#/definitions/ResourceVersion"
 
 
         
