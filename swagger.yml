@@ -374,21 +374,18 @@ paths:
       description: |
         Register a new Webhook
       parameters:
-        - name: info
-          in: body
-          description: Webhook information
+        - name: url
+          type: string
+          description: URL to call
+          in: formData
           required: true
-          schema:
-            type: object
-            properties:
-              url:
-                type: string
-                description: URL to call
-              events:
-                type: array
-                description: Events to register
-                items:
-                  type: string
+        - name: events
+          type: array
+          description: Events to register
+          items:
+            type: string
+          in: formData
+          required: true
       responses:
         200:
           description: OK
