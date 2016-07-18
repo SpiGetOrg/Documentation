@@ -330,6 +330,10 @@ definitions:
     title: Resource Version
     type: object
     properties:
+      id:
+        type: number
+        format: integer
+        description: Version ID
       name:
         type: string
         description: Version name (e.g. v1.0)
@@ -350,6 +354,10 @@ definitions:
     title: Resource Update
     type: object
     properties:
+      id:
+        type: number
+        format: integer
+        description: Update ID
       title:
         type: string
         description: Update title
@@ -401,6 +409,10 @@ definitions:
     title: Author
     type: object
     properties:
+      id:
+        type: number
+        format: integer
+        description: Id of the author
       name:
         type: string
         description: Author name
@@ -410,6 +422,10 @@ definitions:
     title: Category
     type: object
     properties:
+      id:
+        type: number
+        format: integer
+        description: Category ID
       name:
         type: string
         description: Category name
