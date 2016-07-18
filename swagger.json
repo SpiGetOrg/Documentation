@@ -650,12 +650,19 @@
         "summary" : "Register Webhook",
         "description" : "Register a new Webhook\n",
         "parameters" : [ {
-          "in" : "body",
-          "name" : "info",
-          "description" : "Webhook information",
+          "name" : "url",
+          "in" : "formData",
+          "description" : "URL to call",
           "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/info"
+          "type" : "string"
+        }, {
+          "name" : "events",
+          "in" : "formData",
+          "description" : "Events to register",
+          "required" : true,
+          "type" : "array",
+          "items" : {
+            "type" : "string"
           }
         } ],
         "responses" : {
@@ -1057,22 +1064,6 @@
         "events" : {
           "type" : "array",
           "description" : "Events",
-          "items" : {
-            "type" : "string"
-          }
-        }
-      }
-    },
-    "info" : {
-      "type" : "object",
-      "properties" : {
-        "url" : {
-          "type" : "string",
-          "description" : "URL to call"
-        },
-        "events" : {
-          "type" : "array",
-          "description" : "Events to register",
           "items" : {
             "type" : "string"
           }
