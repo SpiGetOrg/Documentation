@@ -482,6 +482,108 @@
         }
       }
     },
+    "/resources/{resource}/updates" : {
+      "get" : {
+        "tags" : [ "resources" ],
+        "summary" : "Resource Updates",
+        "description" : "Get updates of a resource\n",
+        "parameters" : [ {
+          "name" : "resource",
+          "in" : "path",
+          "description" : "Resource ID or Name",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Update Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ResourceUpdate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resources/{resource}/versions" : {
+      "get" : {
+        "tags" : [ "resources" ],
+        "summary" : "Resource Versions",
+        "description" : "Get versions of a resource\n",
+        "parameters" : [ {
+          "name" : "resource",
+          "in" : "path",
+          "description" : "Resource ID or Name",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Version Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ResourceVersion"
+              }
+            }
+          }
+        }
+      }
+    },
     "/status" : {
       "get" : {
         "tags" : [ "status" ],
@@ -493,6 +595,102 @@
             "description" : "OK",
             "schema" : {
               "$ref" : "#/definitions/inline_response_200"
+            }
+          }
+        }
+      }
+    },
+    "/webhook/delete/{id}/{secret}" : {
+      "delete" : {
+        "tags" : [ "webhook" ],
+        "summary" : "Delete Webhook",
+        "description" : "Delete a Webhook\n",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Webhook ID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "secret",
+          "in" : "path",
+          "description" : "Webhook Secret",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "404" : {
+            "description" : "Requested object not found"
+          }
+        }
+      }
+    },
+    "/webhook/events" : {
+      "get" : {
+        "tags" : [ "webhook" ],
+        "summary" : "Webhook events",
+        "description" : "Get a list of available events\n",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_1"
+            }
+          }
+        }
+      }
+    },
+    "/webhook/register" : {
+      "post" : {
+        "tags" : [ "webhook" ],
+        "summary" : "Register Webhook",
+        "description" : "Register a new Webhook\n",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "info",
+          "description" : "Webhook information",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/info"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_2"
+            }
+          },
+          "400" : {
+            "description" : "Invalid request",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400"
+            }
+          }
+        }
+      }
+    },
+    "/webhook/status/{id}" : {
+      "get" : {
+        "tags" : [ "webhook" ],
+        "summary" : "Webhook Status",
+        "description" : "Get the status of a Webhook\n",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Webhook",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_3"
             }
           }
         }
@@ -853,6 +1051,67 @@
           "$ref" : "#/definitions/inline_response_200_status"
         }
       }
+    },
+    "inline_response_200_1" : {
+      "properties" : {
+        "events" : {
+          "type" : "array",
+          "description" : "Events",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "info" : {
+      "type" : "object",
+      "properties" : {
+        "url" : {
+          "type" : "string",
+          "description" : "URL to call"
+        },
+        "events" : {
+          "type" : "array",
+          "description" : "Events to register",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "inline_response_200_2" : {
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "description" : "ID of the registered Webhook"
+        },
+        "secret" : {
+          "type" : "string",
+          "description" : "Registration secret"
+        }
+      }
+    },
+    "inline_response_400" : {
+      "properties" : {
+        "error" : {
+          "type" : "string",
+          "description" : "Error message"
+        }
+      }
+    },
+    "inline_response_200_3" : {
+      "properties" : {
+        "failedConnections" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Amount of failed connections"
+        },
+        "status" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Status id"
+        }
+      }
     }
   },
   "parameters" : {
@@ -920,6 +1179,24 @@
     },
     "success" : {
       "description" : "Successful response"
+    },
+    "updateArray" : {
+      "description" : "Update Array",
+      "schema" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/definitions/ResourceUpdate"
+        }
+      }
+    },
+    "versionArray" : {
+      "description" : "Version Array",
+      "schema" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/definitions/ResourceVersion"
+        }
+      }
     }
   }
 }
