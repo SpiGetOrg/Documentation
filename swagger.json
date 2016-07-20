@@ -482,6 +482,57 @@
         }
       }
     },
+    "/resources/{resource}/reviews" : {
+      "get" : {
+        "tags" : [ "resources" ],
+        "summary" : "Resource Reviews",
+        "description" : "Get reviews of a resource\n",
+        "parameters" : [ {
+          "name" : "resource",
+          "in" : "path",
+          "description" : "Resource ID or Name",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Review Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ResourceReview"
+              }
+            }
+          }
+        }
+      }
+    },
     "/resources/{resource}/updates" : {
       "get" : {
         "tags" : [ "resources" ],
@@ -1281,6 +1332,15 @@
         "type" : "array",
         "items" : {
           "$ref" : "#/definitions/Resource"
+        }
+      }
+    },
+    "reviewArray" : {
+      "description" : "Review Array",
+      "schema" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/definitions/ResourceReview"
         }
       }
     },
