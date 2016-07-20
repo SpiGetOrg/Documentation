@@ -209,6 +209,25 @@ paths:
       responses:
         200:
           $ref: "#/responses/updateArray"
+  '/resources/{resource}/reviews':
+    get:
+      tags: ["resources"]
+      summary: Resource Reviews
+      description: |
+        Get reviews of a resource
+      parameters:
+        - name: resource
+          type: string
+          description: Resource ID or Name
+          in: path
+          required: true
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/reviewArray"
   '/resources/new':
     get:
       tags: ["resources"]
@@ -760,6 +779,12 @@ responses:
       type: array
       items:
         $ref: "#/definitions/ResourceUpdate"
+  reviewArray:
+    description: Review Array
+    schema:
+      type: array
+      items:
+        $ref: "#/definitions/ResourceReview"
 
 
         
