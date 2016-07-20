@@ -350,6 +350,57 @@ paths:
       responses:
         200:
           $ref: "#/responses/resourceArray"
+  '/search/resources/{query}':
+    get:
+      tags: ["search","resources"]
+      summary: Resource Search
+      description: |
+        Search resources
+      parameters:
+        - name: query
+          type: string
+          description: Search query
+          in: path
+          required: true
+        - name: field
+          type: string
+          description: Field to search in
+          in: query
+          enum:
+            - name
+            - tag
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/resourceArray"
+  '/search/authors/{query}':
+    get:
+      tags: ["search","authors"]
+      summary: Author Search
+      description: |
+        Search authors
+      parameters:
+        - name: query
+          type: string
+          description: Search query
+          in: path
+          required: true
+        - name: field
+          type: string
+          description: Field to search in
+          in: query
+          enum:
+            - name
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/authorArray"
   '/webhook/events':
     get:
       tags: ["webhook"]
