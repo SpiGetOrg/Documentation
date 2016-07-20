@@ -584,6 +584,122 @@
         }
       }
     },
+    "/search/authors/{query}" : {
+      "get" : {
+        "tags" : [ "search", "authors" ],
+        "summary" : "Author Search",
+        "description" : "Search authors\n",
+        "parameters" : [ {
+          "name" : "query",
+          "in" : "path",
+          "description" : "Search query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "field",
+          "in" : "query",
+          "description" : "Field to search in",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "name" ]
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Author Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Author"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search/resources/{query}" : {
+      "get" : {
+        "tags" : [ "search", "resources" ],
+        "summary" : "Resource Search",
+        "description" : "Search resources\n",
+        "parameters" : [ {
+          "name" : "query",
+          "in" : "path",
+          "description" : "Search query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "field",
+          "in" : "query",
+          "description" : "Field to search in",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "name", "tag" ]
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Resource Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Resource"
+              }
+            }
+          }
+        }
+      }
+    },
     "/status" : {
       "get" : {
         "tags" : [ "status" ],
