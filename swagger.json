@@ -137,6 +137,57 @@
         }
       }
     },
+    "/authors/{author}/reviews" : {
+      "get" : {
+        "tags" : [ "authors" ],
+        "summary" : "Author reviews",
+        "description" : "Get an author's reviews left on resources\n",
+        "parameters" : [ {
+          "name" : "author",
+          "in" : "path",
+          "description" : "Author ID or Name",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Review Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ResourceReview"
+              }
+            }
+          }
+        }
+      }
+    },
     "/categories" : {
       "get" : {
         "tags" : [ "categories" ],
