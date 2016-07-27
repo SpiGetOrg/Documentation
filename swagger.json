@@ -41,7 +41,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
-          "description" : "Field to sort by",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
           "required" : false,
           "type" : "string"
         }, {
@@ -114,7 +114,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
-          "description" : "Field to sort by",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
           "required" : false,
           "type" : "string"
         }, {
@@ -159,7 +159,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
-          "description" : "Field to sort by",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
           "required" : false,
           "type" : "string"
         }, {
@@ -232,7 +232,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
-          "description" : "Field to sort by",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
           "required" : false,
           "type" : "string"
         }, {
@@ -277,7 +277,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
-          "description" : "Field to sort by",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
           "required" : false,
           "type" : "string"
         }, {
@@ -335,7 +335,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
-          "description" : "Field to sort by",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
           "required" : false,
           "type" : "string"
         }, {
@@ -380,7 +380,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
-          "description" : "Field to sort by",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
           "required" : false,
           "type" : "string"
         }, {
@@ -510,7 +510,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
-          "description" : "Field to sort by",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
           "required" : false,
           "type" : "string"
         }, {
@@ -561,7 +561,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
-          "description" : "Field to sort by",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
           "required" : false,
           "type" : "string"
         }, {
@@ -612,7 +612,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
-          "description" : "Field to sort by",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
           "required" : false,
           "type" : "string"
         }, {
@@ -670,7 +670,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
-          "description" : "Field to sort by",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
           "required" : false,
           "type" : "string"
         }, {
@@ -728,7 +728,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
-          "description" : "Field to sort by",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
           "required" : false,
           "type" : "string"
         }, {
@@ -1292,7 +1292,7 @@
     "sortParam" : {
       "name" : "sort",
       "in" : "query",
-      "description" : "Field to sort by",
+      "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
       "required" : false,
       "type" : "string"
     },
