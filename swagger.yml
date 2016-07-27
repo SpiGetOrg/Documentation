@@ -319,6 +319,25 @@ paths:
       responses:
         200:
           $ref: "#/responses/resourceArray"
+  '/authors/{author}/reviews':
+    get:
+      tags: ["authors"]
+      summary: Author reviews
+      description: |
+        Get an author's reviews left on resources
+      parameters:
+        - name: author
+          type: string
+          description: Author ID or Name
+          in: path
+          required: true
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/reviewArray"
   '/categories':
     get:
       tags: ["categories"]
