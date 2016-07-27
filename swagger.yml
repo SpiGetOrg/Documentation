@@ -735,7 +735,7 @@ parameters:
   sortParam:
     name: sort
     in: query
-    description: Field to sort by
+    description: Field to sort by. (Use a +/- prefix for ascending/descending order)
     type: string
   fieldsParam:
     name: fields
