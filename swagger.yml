@@ -10,6 +10,8 @@ info:
     name: inventivetalent
     url: https://inventivetalent.org/contact
     email: info@inventivetalent.org
+  description: |
+    API to get information about SpigotMC Resources & Authors
 
 schemes:
   - https
