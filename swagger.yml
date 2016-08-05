@@ -464,6 +464,8 @@ paths:
       summary: Register Webhook
       description: |
         Register a new Webhook
+        
+        Use this form to easily register a new one: https://spiget.org/webhook/
       parameters:
         - name: url
           type: string
