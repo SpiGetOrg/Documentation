@@ -1,6 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
+    "description" : "API to get information about SpigotMC Resources & Authors\n",
     "version" : "2.0",
     "title" : "Spiget",
     "contact" : {
