@@ -867,7 +867,7 @@
       "post" : {
         "tags" : [ "webhook" ],
         "summary" : "Register Webhook",
-        "description" : "Register a new Webhook\n",
+        "description" : "Register a new Webhook\n\nUse this form to easily register a new one: https://spiget.org/webhook/\n",
         "parameters" : [ {
           "name" : "url",
           "in" : "formData",
