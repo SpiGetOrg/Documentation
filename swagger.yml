@@ -12,7 +12,8 @@ info:
     email: info@inventivetalent.org
   description: |
     API to get information about SpigotMC Resources & Authors
-
+    
+    Please send a custom 'User-Agent' header when making requests
 schemes:
   - https
   - http
