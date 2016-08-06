@@ -741,7 +741,7 @@ definitions:
       $id:
         type: number
         format: integer
-    
+
   
 parameters:
   sizeParam:
@@ -779,36 +779,132 @@ responses:
       type: array
       items:
         $ref: "#/definitions/Resource"
+    headers:
+      X-Page-Sort:
+        description: Field the elements are sorted by
+        type: string
+      X-Page-Order:
+        description: Sort order
+        type: integer
+      X-Page-Size:
+        description: Number of elements on the current page
+        type: integer
+      X-Page-Index:
+        description: Current page index
+        type: integer
+      X-Page-Count:
+        description: Total amount of pages
+        type: integer
   authorArray:
     description: Author Array
     schema:
       type: array
       items:
         $ref: "#/definitions/Author"
+    headers:
+      X-Page-Sort:
+        description: Field the elements are sorted by
+        type: string
+      X-Page-Order:
+        description: Sort order
+        type: integer
+      X-Page-Size:
+        description: Number of elements on the current page
+        type: integer
+      X-Page-Index:
+        description: Current page index
+        type: integer
+      X-Page-Count:
+        description: Total amount of pages
+        type: integer
   categoryArray:
     description: Category Array
     schema:
       type: array
       items:
         $ref: "#/definitions/Category"
+    headers:
+      X-Page-Sort:
+        description: Field the elements are sorted by
+        type: string
+      X-Page-Order:
+        description: Sort order
+        type: integer
+      X-Page-Size:
+        description: Number of elements on the current page
+        type: integer
+      X-Page-Index:
+        description: Current page index
+        type: integer
+      X-Page-Count:
+        description: Total amount of pages
+        type: integer
   versionArray:
     description: Version Array
     schema:
       type: array
       items:
         $ref: "#/definitions/ResourceVersion"
+    headers:
+      X-Page-Sort:
+        description: Field the elements are sorted by
+        type: string
+      X-Page-Order:
+        description: Sort order
+        type: integer
+      X-Page-Size:
+        description: Number of elements on the current page
+        type: integer
+      X-Page-Index:
+        description: Current page index
+        type: integer
+      X-Page-Count:
+        description: Total amount of pages
+        type: integer
   updateArray:
     description: Update Array
     schema:
       type: array
       items:
         $ref: "#/definitions/ResourceUpdate"
+    headers:
+      X-Page-Sort:
+        description: Field the elements are sorted by
+        type: string
+      X-Page-Order:
+        description: Sort order
+        type: integer
+      X-Page-Size:
+        description: Number of elements on the current page
+        type: integer
+      X-Page-Index:
+        description: Current page index
+        type: integer
+      X-Page-Count:
+        description: Total amount of pages
+        type: integer
   reviewArray:
     description: Review Array
     schema:
       type: array
       items:
         $ref: "#/definitions/ResourceReview"
+    headers:
+      X-Page-Sort:
+        description: Field the elements are sorted by
+        type: string
+      X-Page-Order:
+        description: Sort order
+        type: integer
+      X-Page-Size:
+        description: Number of elements on the current page
+        type: integer
+      X-Page-Index:
+        description: Current page index
+        type: integer
+      X-Page-Count:
+        description: Total amount of pages
+        type: integer
 
 
         
