@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "API to get information about SpigotMC Resources & Authors\n",
+    "description" : "API to get information about SpigotMC Resources & Authors\n\nPlease send a custom 'User-Agent' header when making requests\n",
     "version" : "2.0",
     "title" : "Spiget",
     "contact" : {
