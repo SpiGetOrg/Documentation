@@ -929,6 +929,37 @@
         }
       }
     },
+    "/resources/{resource}/versions/{version}/download" : {
+      "get" : {
+        "tags" : [ "resources" ],
+        "summary" : "Resource Version Download",
+        "description" : "Download a specific resource version\n\nNote: This only redirects to the stored download location and might not download a file (i.e. for external resources)\n",
+        "parameters" : [ {
+          "name" : "resource",
+          "in" : "path",
+          "description" : "Resource ID or Name",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "version",
+          "in" : "path",
+          "description" : "Version ID or 'latest'",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "302" : {
+            "description" : "Redirect to the download location",
+            "headers" : {
+              "Location" : {
+                "type" : "string",
+                "description" : "Download location"
+              }
+            }
+          }
+        }
+      }
+    },
     "/search/authors/{query}" : {
       "get" : {
         "tags" : [ "search", "authors" ],
