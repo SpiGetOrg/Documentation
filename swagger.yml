@@ -193,6 +193,32 @@ paths:
       responses:
         200:
           $ref: "#/responses/versionArray"
+  '/resources/{resource}/versions/{version}/download':
+    get:
+      tags: ["resources"]
+      summary: Resource Version Download
+      description: |
+        Download a specific resource version
+        
+        Note: This only redirects to the stored download location and might not download a file (i.e. for external resources)
+      parameters:
+        - name: resource
+          type: string
+          description: Resource ID or Name
+          in: path
+          required: true
+        - name: version
+          type: string
+          description: Version ID or 'latest'
+          in: path
+          required: true
+      responses:
+        302:
+          description: Redirect to the download location
+          headers:
+            Location:
+              description: Download location
+              type: string
   '/resources/{resource}/updates':
     get:
       tags: ["resources"]
