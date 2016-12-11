@@ -11,9 +11,8 @@ info:
     url: https://inventivetalent.org/contact
     email: info@inventivetalent.org
   description: |
-    API to get information about SpigotMC Resources & Authors
-    
-    Please send a custom 'User-Agent' header when making requests
+    Documentation for Spiget  
+    Spiget is an API to quickly and easily get information about Spigot plugins, resources and authors
 schemes:
   - https
   - http
@@ -931,6 +930,3 @@ responses:
       X-Page-Count:
         description: Total amount of pages
         type: integer
-
-
-        
