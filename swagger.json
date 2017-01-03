@@ -1496,36 +1496,6 @@
       },
       "title" : "Id-Reference to another object"
     },
-    "inline_response_200_stats" : {
-      "properties" : {
-        "resource_versions" : {
-          "type" : "number",
-          "format" : "integer",
-          "description" : "Resource version count"
-        },
-        "resource_updates" : {
-          "type" : "number",
-          "format" : "integer",
-          "description" : "Resource update count"
-        },
-        "resources" : {
-          "type" : "number",
-          "format" : "integer",
-          "description" : "Resource count"
-        },
-        "categories" : {
-          "type" : "number",
-          "format" : "integer",
-          "description" : "Category count"
-        },
-        "authors" : {
-          "type" : "number",
-          "format" : "integer",
-          "description" : "Author count"
-        }
-      },
-      "description" : "API stats"
-    },
     "inline_response_200_status_fetch_page_item" : {
       "properties" : {
         "index" : {
@@ -1542,18 +1512,21 @@
           "format" : "integer",
           "description" : "Amount of pages to load"
         },
-        "item" : {
-          "$ref" : "#/definitions/inline_response_200_status_fetch_page_item"
-        },
         "index" : {
           "type" : "number",
           "format" : "integer",
           "description" : "Current page index"
+        },
+        "item" : {
+          "$ref" : "#/definitions/inline_response_200_status_fetch_page_item"
         }
       }
     },
     "inline_response_200_status_fetch" : {
       "properties" : {
+        "page" : {
+          "$ref" : "#/definitions/inline_response_200_status_fetch_page"
+        },
         "start" : {
           "type" : "number",
           "format" : "long",
@@ -1567,9 +1540,6 @@
           "type" : "number",
           "format" : "long",
           "description" : "Timestamp of the last fetcher end (0 if currently active)"
-        },
-        "page" : {
-          "$ref" : "#/definitions/inline_response_200_status_fetch_page"
         }
       }
     },
@@ -1581,13 +1551,43 @@
       },
       "description" : "Status overview"
     },
+    "inline_response_200_stats" : {
+      "properties" : {
+        "authors" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Author count"
+        },
+        "resources" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Resource count"
+        },
+        "resource_versions" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Resource version count"
+        },
+        "categories" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Category count"
+        },
+        "resource_updates" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Resource update count"
+        }
+      },
+      "description" : "API stats"
+    },
     "inline_response_200" : {
       "properties" : {
-        "stats" : {
-          "$ref" : "#/definitions/inline_response_200_stats"
-        },
         "status" : {
           "$ref" : "#/definitions/inline_response_200_status"
+        },
+        "stats" : {
+          "$ref" : "#/definitions/inline_response_200_stats"
         }
       }
     },
@@ -1624,15 +1624,15 @@
     },
     "inline_response_200_3" : {
       "properties" : {
-        "failedConnections" : {
-          "type" : "number",
-          "format" : "integer",
-          "description" : "Amount of failed connections"
-        },
         "status" : {
           "type" : "number",
           "format" : "integer",
           "description" : "Status id"
+        },
+        "failedConnections" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "Amount of failed connections"
         }
       }
     }
