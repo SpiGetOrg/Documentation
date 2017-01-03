@@ -24,7 +24,6 @@ produces:
 consumes: 
   - application/json
 
-
 paths:
   '/status':
     get:
