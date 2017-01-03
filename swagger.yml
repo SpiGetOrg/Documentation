@@ -677,9 +677,6 @@ definitions:
         description: Amount of downloads
       rating:
         $ref: "#/definitions/ResourceRating"
-      url:
-        type: string
-        description: Relative URL to the file
   ResourceUpdate:
     title: Resource Update
     type: object
