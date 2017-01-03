@@ -1,6 +1,6 @@
 lang: bash
 before_install:
-  - chmod +x .travis/push.sh
+  - chmod +x ./swagger.sh
 script:
   - ./swagger.sh
 env:
