@@ -1,0 +1,13 @@
+lang: bash
+before_install:
+  - sudo apt-get install pandoc
+  - gem install asciidoctor
+script:
+  - wget -nc http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.1.6/swagger-codegen-cli-2.1.6.jar -O swagger-codegen-cli.jar || echo "swagger-codegen already downloaded"
+  - java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swagger
+after_success:
+  - .travis/push.sh
+env:
+  global:
+    - secure: "FebF6aiWLqj2GZIOll/6qOUFAbkijHkfzQMWz+M2EcVEj/wMWNeq09jkADdu0fH++YaRHeF74pznBWJD9NIVt4EpcSQ/vsgOZo2FEf2mNMitWJUqNM3kmimcQ5UAslh9wg9nIWlSo52z7hDGORuhVu09WMoQ6FtnHpDzIW0AWF6f/GPiFs6f7uAuPQI1Xo0uLXV4JLContIz+SVANWB6gpxEHAo5H5WE5gZmkPebe4QScjvawlnX3znkndCwR9t4uUdH481y8VXCTw0rBpOyYxH3Yx25eN3uvnbcSoAWgiaavxp3peTOKUO2nvgK6fdpURKRlQT5qbPq2+JEzHANuJfIJ0D7RaRrQHiPU81mpiNavQxc3A9kVie693uZC9eB6L00IuAl1dDIqpdKGyXhLPHT9pCFhYuzkoZJWOZ4Z3EVtRQSXhEGOOFtYGH+cYlgmZyOh4LclMvTzjI+hIRbqg6Ileobx4JW9jmlyvqaj59KJSGImghO3+B/Lgnd3v98UrUrPf9qUSeo/lZ/5MJsLk1dZ//ABKwGcuJvj0Cwpqjf2/JKOxNAlKZRhuDBVmLXQh/oVLDwaAk7SBWr6/T2qmHplOm1dLwZAOdRuZwSmkXZ+cYfTsQiUbj3hGAJcHR6hI7EBqBvhiS7gulDL59AYRt/xmCazbJyAc1HE2F7hq4="
+    - secure: "SYSgGclTehlaz3xkBuFOczmOBGrS8erwNFeHlQeJnAZKCnSk3bYnkQ59y4+B4Bh+A9NtTKqTu67+gpR3Q6fErypCIz+g+ciFpp55ghuYgDHvreDHnLX4wfoSVOn48VfnYop8rwWlPOGS0dcb04U/xqOwXteeOEbZ7l/7Ythh6raVR6C5SEmgkeMUXONrjZUMCzA0L41H89UZw3i/zE3sEDOmQcCXkeNaN9UyRi37yqmU7xva46+p9B5p52FJXrLI+MyQytsd/ei+gT8WHug/DDgriFFsjElVTrtXMROJtMuDH9VXJS4vLR1zGVxihRjNvZOHCAS2nWPYJPDgyuTFUoFVkF9jBVrsJz9ZR7iWHM+0euZRFupG3i+0QG5YZFBEdnV3UIW9VvjhYIb9cXUqcXQLh9vc7cu4MTPXxm9+eYuvOFeSvCl3T6J01EraXuJKGNxAuW5xICI+8IWrZtf/Tiq7pUzBdpWsFqy0vAmxk/R19Cw5ieiEfz93JgMuetlmRfCu6mNn3AoJBHlrtIb/+4NaHzErmSpgvYP0hMSNIDZvuwJ6ypV7TbjQoS3H03hlMuvuP0khOvE5KI2nvonMP9reo3GAGb4tfyovvw8qnNYWvvZHMb2XT+mcDC7zvA+xGcgVThV3i9SV+09LosAvYP/c4ZE7F62IuDWnqKkhedU="
