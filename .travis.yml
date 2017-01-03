@@ -2,10 +2,7 @@ lang: bash
 before_install:
   - chmod +x .travis/push.sh
 script:
-  - wget -nc http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.1.6/swagger-codegen-cli-2.1.6.jar -O swagger-codegen-cli.jar || echo "swagger-codegen already downloaded"
-  - java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swagger
-after_success:
-  - .travis/push.sh
+  - ./swagger.sh
 env:
   global:
     - GITHUB_REPO: github.com/SpiGetOrg/Documentation.git
