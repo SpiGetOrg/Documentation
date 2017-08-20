@@ -101,7 +101,35 @@ paths:
       tags: ["resources"]
       summary: Resource List
       description: |
-        Get a list of available resources
+        Get a list of available resources (premium and free)
+      parameters:
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/resourceArray"
+  '/resources/premium':
+    get:
+      tags: ["resources"]
+      summary: Premium Resource List
+      description: |
+        Get a list of available premium resources
+      parameters:
+        - $ref: "#/parameters/sizeParam"
+        - $ref: "#/parameters/pageParam"        
+        - $ref: "#/parameters/sortParam"
+        - $ref: "#/parameters/fieldsParam"
+      responses:
+        200:
+          $ref: "#/responses/resourceArray"
+  '/resources/free':
+    get:
+      tags: ["resources"]
+      summary: Free Resource List
+      description: |
+        Get a list of available free resources
       parameters:
         - $ref: "#/parameters/sizeParam"
         - $ref: "#/parameters/pageParam"        
@@ -489,6 +517,7 @@ paths:
         Register a new Webhook
         
         Use this form to easily register a new one: https://spiget.org/webhook/
+      consumes: ["application/x-www-form-urlencoded"]
       parameters:
         - name: url
           type: string
