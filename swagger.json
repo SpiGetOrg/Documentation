@@ -421,7 +421,7 @@
       "get" : {
         "tags" : [ "resources" ],
         "summary" : "Resource List",
-        "description" : "Get a list of available resources\n",
+        "description" : "Get a list of available resources (premium and free)\n",
         "parameters" : [ {
           "name" : "size",
           "in" : "query",
@@ -564,11 +564,145 @@
         }
       }
     },
+    "/resources/free" : {
+      "get" : {
+        "tags" : [ "resources" ],
+        "summary" : "Free Resource List",
+        "description" : "Get a list of available free resources\n",
+        "parameters" : [ {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Resource Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Resource"
+              }
+            },
+            "headers" : {
+              "X-Page-Sort" : {
+                "type" : "string",
+                "description" : "Field the elements are sorted by"
+              },
+              "X-Page-Order" : {
+                "type" : "integer",
+                "description" : "Sort order"
+              },
+              "X-Page-Size" : {
+                "type" : "integer",
+                "description" : "Number of elements on the current page"
+              },
+              "X-Page-Index" : {
+                "type" : "integer",
+                "description" : "Current page index"
+              },
+              "X-Page-Count" : {
+                "type" : "integer",
+                "description" : "Total amount of pages"
+              }
+            }
+          }
+        }
+      }
+    },
     "/resources/new" : {
       "get" : {
         "tags" : [ "resources" ],
         "summary" : "New Resources",
         "description" : "Get all new resources\n",
+        "parameters" : [ {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Resource Array",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Resource"
+              }
+            },
+            "headers" : {
+              "X-Page-Sort" : {
+                "type" : "string",
+                "description" : "Field the elements are sorted by"
+              },
+              "X-Page-Order" : {
+                "type" : "integer",
+                "description" : "Sort order"
+              },
+              "X-Page-Size" : {
+                "type" : "integer",
+                "description" : "Number of elements on the current page"
+              },
+              "X-Page-Index" : {
+                "type" : "integer",
+                "description" : "Current page index"
+              },
+              "X-Page-Count" : {
+                "type" : "integer",
+                "description" : "Total amount of pages"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resources/premium" : {
+      "get" : {
+        "tags" : [ "resources" ],
+        "summary" : "Premium Resource List",
+        "description" : "Get a list of available premium resources\n",
         "parameters" : [ {
           "name" : "size",
           "in" : "query",
@@ -1185,6 +1319,7 @@
         "tags" : [ "webhook" ],
         "summary" : "Register Webhook",
         "description" : "Register a new Webhook\n\nUse this form to easily register a new one: https://spiget.org/webhook/\n",
+        "consumes" : [ "application/x-www-form-urlencoded" ],
         "parameters" : [ {
           "name" : "url",
           "in" : "formData",
