@@ -1440,6 +1440,19 @@
         "icon" : {
           "$ref" : "#/definitions/Icon"
         },
+        "premium" : {
+          "type" : "boolean",
+          "description" : "Whether the resource is a premium resource^"
+        },
+        "price" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Price of the resource (only if the resource is premium)"
+        },
+        "currency" : {
+          "type" : "string",
+          "description" : "Price Currency of the resource (only if the resource is premium)"
+        },
         "reviews" : {
           "type" : "array",
           "items" : {
