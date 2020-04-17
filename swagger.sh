@@ -16,4 +16,4 @@ rm swagger-codegen-cli.jar
 
 # Commit file & push
 git add swagger.json
-git commit -m "Generate swagger.json [ci skip]" || echo "Commit failed (There probably were no changes)"
+#git commit -m "Generate swagger.json [ci skip]" || echo "Commit failed (There probably were no changes)"
