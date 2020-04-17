@@ -19,8 +19,6 @@ jobs:
         with:
           time: '5s'
         
-      - name: Git Add
-        run: git add * 
         
       - name: Deploy 🚀
         uses: mikeal/publish-to-github-action@master
