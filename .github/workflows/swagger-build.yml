@@ -11,6 +11,8 @@ jobs:
 
       - name: Build
         run: chmod +x ./swagger.sh && ./swagger.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Sleep for 5 seconds
         uses: jakejarvis/wait-action@master
