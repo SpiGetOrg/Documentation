@@ -2,7 +2,7 @@
 
 # Git Config
 git config user.name "Travis"
-git config user.email "${GITHUB_EMAIL}"
+git config user.email "${GIT_EMAIL}"
 
 # Checkout
 git checkout master
@@ -14,4 +14,4 @@ java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swagger
 # Commit file & push
 git add swagger.json
 git commit -m "Generate swagger.json [ci skip]" || echo "Commit failed (There probably were no changes)"
-git push --force --quiet "https://InventiveBot:${GITHUB_TOKEN}@${GITHUB_REPO}" master
+git push --force --quiet "https://InventiveBot:${GITHUB_TOKEN}@${GIT_REPO}" master
