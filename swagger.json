@@ -6,7 +6,7 @@
     "title" : "Spiget",
     "contact" : {
       "name" : "inventivetalent",
-      "url" : "https://inventivetalent.org/contact",
+      "url" : "https://inventivetalent.org",
       "email" : "info@inventivetalent.org"
     },
     "license" : {
@@ -1455,8 +1455,23 @@
         },
         "reviews" : {
           "type" : "array",
+          "description" : "List of review IDs on this resource - only present if directly requesting the resource",
           "items" : {
-            "$ref" : "#/definitions/ResourceReview"
+            "$ref" : "#/definitions/IdReference"
+          }
+        },
+        "versions" : {
+          "type" : "array",
+          "description" : "List of version IDs of this resource - only present if directly requesting the resource",
+          "items" : {
+            "$ref" : "#/definitions/IdReference"
+          }
+        },
+        "updates" : {
+          "type" : "array",
+          "description" : "List of update IDs of this resource - only present if directly requesting the resource",
+          "items" : {
+            "$ref" : "#/definitions/IdReference"
           }
         }
       },
@@ -1637,7 +1652,7 @@
     "IdReference" : {
       "type" : "object",
       "properties" : {
-        "$id" : {
+        "id" : {
           "type" : "number",
           "format" : "integer"
         }
