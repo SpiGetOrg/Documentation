@@ -686,9 +686,20 @@ definitions:
         type: string
         description: Price Currency of the resource (only if the resource is premium)
       reviews:
+        description: List of review IDs on this resource - only present if directly requesting the resource
         type: array
         items:
-          $ref: '#/definitions/ResourceReview'
+          $ref: '#/definitions/IdReference'
+      versions:
+        description: List of version IDs of this resource - only present if directly requesting the resource
+        type: array
+        items:
+          $ref: '#/definitions/IdReference'
+      updates:
+        description: List of update IDs of this resource - only present if directly requesting the resource
+        type: array
+        items:
+          $ref: '#/definitions/IdReference'
   ResourceFile:
     title: Resource File
     type: object
@@ -820,7 +831,7 @@ definitions:
     title: Id-Reference to another object
     type: object
     properties:
-      $id:
+      id:
         type: number
         format: integer
 parameters:
