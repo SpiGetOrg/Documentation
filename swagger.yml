@@ -7,7 +7,7 @@ info:
     url: 'https://github.com/SpiGetOrg/Spiget/blob/master/LICENSE.md'
   contact:
     name: inventivetalent
-    url: 'https://inventivetalent.org'
+    url: 'https://inventivetalent.org/contact'
     email: info@inventivetalent.org
   description: |
     Documentation for Spiget  
@@ -222,6 +222,51 @@ paths:
       responses:
         '200':
           $ref: '#/responses/versionArray'
+  '/resources/{resource}/versions/{version}':
+    get:
+      tags:
+        - resources
+      summary: Resource Version
+      description: |
+        Get a specific resource version by its ID
+      parameters:
+        - name: resource
+          type: number
+          description: Resource ID 
+          in: path
+          required: true
+        - name: version
+          type: number
+          description: Version ID
+          in: path
+          require: true
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ResourceVersion'
+        '404':
+          $ref: '#/responses/notFound'        
+  '/resources/{resource}/versions/latest':
+    get:
+      tags:
+        - resources
+      summary: Latest Resource Version
+      description: |
+        Get the latest resource version
+      parameters:
+        - name: resource
+          type: number
+          description: Resource ID 
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ResourceVersion'
+        '404':
+          $ref: '#/responses/notFound'        
   '/resources/{resource}/versions/{version}/download':
     get:
       tags:
