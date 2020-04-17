@@ -1,14 +1,13 @@
 swagger: '2.0'
-
 info:
-  version: "2.0"
-  title: "Spiget"
+  version: '2.0'
+  title: Spiget
   license:
     name: Apache License 2.0
-    url: https://github.com/SpiGetOrg/Spiget/blob/master/LICENSE.md
+    url: 'https://github.com/SpiGetOrg/Spiget/blob/master/LICENSE.md'
   contact:
     name: inventivetalent
-    url: https://inventivetalent.org/contact
+    url: 'https://inventivetalent.org/contact'
     email: info@inventivetalent.org
   description: |
     Documentation for Spiget  
@@ -16,23 +15,22 @@ info:
 schemes:
   - https
   - http
-host: "api.spiget.org"
-basePath: "/v2"
-
-produces: 
+host: api.spiget.org
+basePath: /v2
+produces:
   - application/json
-consumes: 
+consumes:
   - application/json
-
 paths:
-  '/status':
+  /status:
     get:
-      tags: ["status"]
+      tags:
+        - status
       summary: API Status
       description: |
         Get the API status
       responses:
-        200:
+        '200':
           description: OK
           schema:
             properties:
@@ -96,139 +94,147 @@ paths:
                     description: Resource version count
                     type: number
                     format: integer
-  '/resources':
+  /resources:
     get:
-      tags: ["resources"]
+      tags:
+        - resources
       summary: Resource List
       description: |
         Get a list of available resources (premium and free)
       parameters:
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/resourceArray"
-  '/resources/premium':
+        '200':
+          $ref: '#/responses/resourceArray'
+  /resources/premium:
     get:
-      tags: ["resources"]
+      tags:
+        - resources
       summary: Premium Resource List
       description: |
         Get a list of available premium resources
       parameters:
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/resourceArray"
-  '/resources/free':
+        '200':
+          $ref: '#/responses/resourceArray'
+  /resources/free:
     get:
-      tags: ["resources"]
+      tags:
+        - resources
       summary: Free Resource List
       description: |
         Get a list of available free resources
       parameters:
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/resourceArray"
+        '200':
+          $ref: '#/responses/resourceArray'
   '/resources/{resource}':
     get:
-      tags: ["resources"]
+      tags:
+        - resources
       summary: Resource Details
       description: |
-        Get a resource by its ID or name
+        Get a resource by its ID
       parameters:
         - name: resource
-          type: string
-          description: Resource ID or Name
+          type: number
+          description: Resource ID 
           in: path
           required: true
       responses:
-        200:
+        '200':
           description: OK
           schema:
-            $ref: "#/definitions/Resource"
-        404:
-          $ref: "#/responses/notFound"
+            $ref: '#/definitions/Resource'
+        '404':
+          $ref: '#/responses/notFound'
   '/resources/{resource}/author':
     get:
-      tags: ["resources"]
+      tags:
+        - resources
       summary: Resource Author
       description: |
         Get the resource author
       parameters:
         - name: resource
-          type: string
-          description: Resource ID or Name
+          type: number
+          description: Resource ID
           in: path
           required: true
       responses:
-        200:
+        '200':
           description: OK
           schema:
-            $ref: "#/definitions/Author"
+            $ref: '#/definitions/Author'
   '/resources/{resource}/download':
     get:
-      tags: ["resources"]
+      tags:
+        - resources
       summary: Resource Download
       description: |
         Download a resource
       parameters:
         - name: resource
-          type: string
-          description: Resource ID or Name
+          type: number
+          description: Resource ID
           in: path
           required: true
       responses:
-        200:
+        '200':
           description: File found
           headers:
             Content-Type:
               description: Content type for the resource file (applicaation/octet-stream if unknown)
               type: string
             Content-Disposition:
-              description: Download information, including the file name
+              description: 'Download information, including the file name'
               type: string
-        404:
+        '404':
           description: Resource not found / File not Found
   '/resources/{resource}/versions':
     get:
-      tags: ["resources"]
+      tags:
+        - resources
       summary: Resource Versions
       description: |
         Get versions of a resource
       parameters:
         - name: resource
-          type: string
-          description: Resource ID or Name
+          type: number
+          description: Resource ID
           in: path
           required: true
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/versionArray"
+        '200':
+          $ref: '#/responses/versionArray'
   '/resources/{resource}/versions/{version}/download':
     get:
-      tags: ["resources"]
+      tags:
+        - resources
       summary: Resource Version Download
       description: |
         Download a specific resource version
-        
+
         Note: This only redirects to the stored download location and might not download a file (i.e. for external resources)
       parameters:
         - name: resource
-          type: string
-          description: Resource ID or Name
+          type: number
+          description: Resource ID
           in: path
           required: true
         - name: version
@@ -237,7 +243,7 @@ paths:
           in: path
           required: true
       responses:
-        302:
+        '302':
           description: Redirect to the download location
           headers:
             Location:
@@ -245,66 +251,70 @@ paths:
               type: string
   '/resources/{resource}/updates':
     get:
-      tags: ["resources"]
+      tags:
+        - resources
       summary: Resource Updates
       description: |
         Get updates of a resource
       parameters:
         - name: resource
-          type: string
-          description: Resource ID or Name
+          type: number
+          description: Resource ID
           in: path
           required: true
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/updateArray"
+        '200':
+          $ref: '#/responses/updateArray'
   '/resources/{resource}/reviews':
     get:
-      tags: ["resources"]
+      tags:
+        - resources
       summary: Resource Reviews
       description: |
         Get reviews of a resource
       parameters:
         - name: resource
-          type: string
-          description: Resource ID or Name
+          type: number
+          description: Resource ID
           in: path
           required: true
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/reviewArray"
-  '/resources/new':
+        '200':
+          $ref: '#/responses/reviewArray'
+  /resources/new:
     get:
-      tags: ["resources"]
+      tags:
+        - resources
       summary: New Resources
       description: |
         Get all new resources
       parameters:
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/resourceArray"
+        '200':
+          $ref: '#/responses/resourceArray'
   '/resources/for/{version}':
     get:
-      tags: ["resources"]
+      tags:
+        - resources
       summary: Resources for Versions
       description: |
         Get resources for the specified version(s)
       parameters:
         - name: version
           type: string
-          description: Version(s), separated by commas
+          description: 'Version(s), separated by commas'
           in: path
           required: true
         - name: method
@@ -314,136 +324,145 @@ paths:
             - all
           description: Method to use to check for versions
           in: query
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/resourceArray"
-  '/authors':
+        '200':
+          $ref: '#/responses/resourceArray'
+  /authors:
     get:
-      tags: ["authors"]
+      tags:
+        - authors
       summary: Author List
       description: |
         Get a list of available authors
         Note: This only includes members involved with resources, either being their author or having reviewed a resource
       parameters:
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/authorArray"
+        '200':
+          $ref: '#/responses/authorArray'
   '/authors/{author}':
     get:
-      tags: ["authors"]
+      tags:
+        - authors
       summary: Author Details
       description: |
         Get details about an author
       parameters:
         - name: author
-          type: string
-          description: Author ID or Name
+          type: number
+          description: Author ID
           in: path
           required: true
       responses:
-        200:
+        '200':
           description: OK
           schema:
-            $ref: "#/definitions/Author"
+            $ref: '#/definitions/Author'
   '/authors/{author}/resources':
     get:
-      tags: ["authors"]
+      tags:
+        - authors
       summary: Author resources
       description: |
         Get an author's resources
       parameters:
         - name: author
-          type: string
-          description: Author ID or Name
+          type: number
+          description: Author ID
           in: path
           required: true
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/resourceArray"
+        '200':
+          $ref: '#/responses/resourceArray'
   '/authors/{author}/reviews':
     get:
-      tags: ["authors"]
+      tags:
+        - authors
       summary: Author reviews
       description: |
         Get an author's reviews left on resources
       parameters:
         - name: author
-          type: string
-          description: Author ID or Name
+          type: number
+          description: Author ID
           in: path
           required: true
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/reviewArray"
-  '/categories':
+        '200':
+          $ref: '#/responses/reviewArray'
+  /categories:
     get:
-      tags: ["categories"]
+      tags:
+        - categories
       summary: Category List
       description: |
         Get a list of categories
       parameters:
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/categoryArray"
+        '200':
+          $ref: '#/responses/categoryArray'
   '/categories/{category}':
     get:
-      tags: ["categories"]
+      tags:
+        - categories
       summary: Category Details
       description: |
         Get details about a category
       parameters:
         - name: category
-          type: string
-          description: Category ID or Name
+          type: number
+          description: Category ID
           in: path
           required: true
       responses:
-        200:
+        '200':
           description: OK
           schema:
-            $ref: "#/definitions/Category"
+            $ref: '#/definitions/Category'
   '/categories/{category}/resources':
     get:
-      tags: ["categories"]
+      tags:
+        - categories
       summary: Category Resources
       description: |
         Get the resources in a category
       parameters:
         - name: category
-          type: string
-          description: Category ID or Name
+          type: number
+          description: Category ID
           in: path
           required: true
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/resourceArray"
+        '200':
+          $ref: '#/responses/resourceArray'
   '/search/resources/{query}':
     get:
-      tags: ["search","resources"]
+      tags:
+        - search
+        - resources
       summary: Resource Search
       description: |
         Search resources
@@ -460,16 +479,18 @@ paths:
           enum:
             - name
             - tag
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/resourceArray"
+        '200':
+          $ref: '#/responses/resourceArray'
   '/search/authors/{query}':
     get:
-      tags: ["search","authors"]
+      tags:
+        - search
+        - authors
       summary: Author Search
       description: |
         Search authors
@@ -485,21 +506,22 @@ paths:
           in: query
           enum:
             - name
-        - $ref: "#/parameters/sizeParam"
-        - $ref: "#/parameters/pageParam"        
-        - $ref: "#/parameters/sortParam"
-        - $ref: "#/parameters/fieldsParam"
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
       responses:
-        200:
-          $ref: "#/responses/authorArray"
-  '/webhook/events':
+        '200':
+          $ref: '#/responses/authorArray'
+  /webhook/events:
     get:
-      tags: ["webhook"]
+      tags:
+        - webhook
       summary: Webhook events
       description: |
         Get a list of available events
       responses:
-        200:
+        '200':
           description: OK
           schema:
             type: object
@@ -509,15 +531,17 @@ paths:
                 type: array
                 items:
                   type: string
-  '/webhook/register':
+  /webhook/register:
     post:
-      tags: ["webhook"]
+      tags:
+        - webhook
       summary: Register Webhook
       description: |
         Register a new Webhook
-        
+
         Use this form to easily register a new one: https://spiget.org/webhook/
-      consumes: ["application/x-www-form-urlencoded"]
+      consumes:
+        - application/x-www-form-urlencoded
       parameters:
         - name: url
           type: string
@@ -532,7 +556,7 @@ paths:
           in: formData
           required: true
       responses:
-        200:
+        '200':
           description: OK
           schema:
             type: object
@@ -543,7 +567,7 @@ paths:
               secret:
                 type: string
                 description: Registration secret
-        400:
+        '400':
           description: Invalid request
           schema:
             type: object
@@ -553,7 +577,8 @@ paths:
                 description: Error message
   '/webhook/status/{id}':
     get:
-      tags: ["webhook"]
+      tags:
+        - webhook
       summary: Webhook Status
       description: |
         Get the status of a Webhook
@@ -564,7 +589,7 @@ paths:
           description: ID of the Webhook
           required: true
       responses:
-        200:
+        '200':
           description: OK
           schema:
             type: object
@@ -579,7 +604,8 @@ paths:
                 description: Amount of failed connections
   '/webhook/delete/{id}/{secret}':
     delete:
-      tags: ["webhook"]
+      tags:
+        - webhook
       summary: Delete Webhook
       description: |
         Delete a Webhook
@@ -595,12 +621,10 @@ paths:
           description: Webhook Secret
           required: true
       responses:
-        200:
+        '200':
           description: OK
-        404:
-          $ref: "#/responses/notFound"
-            
-          
+        '404':
+          $ref: '#/responses/notFound'
 definitions:
   Resource:
     title: Resource
@@ -624,16 +648,16 @@ definitions:
         format: integer
         description: Number of likes
       file:
-        $ref: "#/definitions/ResourceFile"
+        $ref: '#/definitions/ResourceFile'
       testedVersions:
         type: array
         items:
-            type: string
+          type: string
       links:
         type: object
         description: Map of external and custom links in the resource description
       rating:
-        $ref: "#/definitions/ResourceRating"
+        $ref: '#/definitions/ResourceRating'
       releaseDate:
         type: number
         format: long
@@ -650,8 +674,8 @@ definitions:
         type: boolean
         description: Whether this resource is external (not hosted on SpigotMC.org)
       icon:
-        $ref: "#/definitions/Icon"
-      premium: 
+        $ref: '#/definitions/Icon'
+      premium:
         type: boolean
         description: Whether the resource is a premium resource^
       price:
@@ -664,21 +688,21 @@ definitions:
       reviews:
         type: array
         items:
-          $ref: "#/definitions/ResourceReview"
+          $ref: '#/definitions/ResourceReview'
   ResourceFile:
     title: Resource File
     type: object
     properties:
       type:
         type: string
-        description: File extension (.jar, .zip, .sk)
+        description: 'File extension (.jar, .zip, .sk)'
       size:
         type: number
         format: float
         description: File size
       sizeUnit:
         type: string
-        description: File size-unit (KB, MB, GB)
+        description: 'File size-unit (KB, MB, GB)'
       url:
         type: string
         description: Relative URL to the file
@@ -712,7 +736,7 @@ definitions:
         format: integer
         description: Amount of downloads
       rating:
-        $ref: "#/definitions/ResourceRating"
+        $ref: '#/definitions/ResourceRating'
   ResourceUpdate:
     title: Resource Update
     type: object
@@ -752,9 +776,9 @@ definitions:
     type: object
     properties:
       author:
-        $ref: "#/definitions/Author"
+        $ref: '#/definitions/Author'
       rating:
-        $ref: "#/definitions/ResourceRating"
+        $ref: '#/definitions/ResourceRating'
       message:
         type: string
         description: Base64-Encoded Review message
@@ -780,7 +804,7 @@ definitions:
         type: string
         description: Author name
       icon:
-        $ref: "#/definitions/Icon"
+        $ref: '#/definitions/Icon'
   Category:
     title: Category
     type: object
@@ -799,8 +823,6 @@ definitions:
       $id:
         type: number
         format: integer
-
-  
 parameters:
   sizeParam:
     name: size
@@ -822,10 +844,8 @@ parameters:
   fieldsParam:
     name: fields
     in: query
-    description: Fields to return, separated by commas
+    description: 'Fields to return, separated by commas'
     type: string
-
-
 responses:
   success:
     description: Successful response
@@ -836,7 +856,7 @@ responses:
     schema:
       type: array
       items:
-        $ref: "#/definitions/Resource"
+        $ref: '#/definitions/Resource'
     headers:
       X-Page-Sort:
         description: Field the elements are sorted by
@@ -858,7 +878,7 @@ responses:
     schema:
       type: array
       items:
-        $ref: "#/definitions/Author"
+        $ref: '#/definitions/Author'
     headers:
       X-Page-Sort:
         description: Field the elements are sorted by
@@ -880,7 +900,7 @@ responses:
     schema:
       type: array
       items:
-        $ref: "#/definitions/Category"
+        $ref: '#/definitions/Category'
     headers:
       X-Page-Sort:
         description: Field the elements are sorted by
@@ -902,7 +922,7 @@ responses:
     schema:
       type: array
       items:
-        $ref: "#/definitions/ResourceVersion"
+        $ref: '#/definitions/ResourceVersion'
     headers:
       X-Page-Sort:
         description: Field the elements are sorted by
@@ -924,7 +944,7 @@ responses:
     schema:
       type: array
       items:
-        $ref: "#/definitions/ResourceUpdate"
+        $ref: '#/definitions/ResourceUpdate'
     headers:
       X-Page-Sort:
         description: Field the elements are sorted by
@@ -946,7 +966,7 @@ responses:
     schema:
       type: array
       items:
-        $ref: "#/definitions/ResourceReview"
+        $ref: '#/definitions/ResourceReview'
     headers:
       X-Page-Sort:
         description: Field the elements are sorted by
