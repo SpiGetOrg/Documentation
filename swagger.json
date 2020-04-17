@@ -6,7 +6,7 @@
     "title" : "Spiget",
     "contact" : {
       "name" : "inventivetalent",
-      "url" : "https://inventivetalent.org",
+      "url" : "https://inventivetalent.org/contact",
       "email" : "info@inventivetalent.org"
     },
     "license" : {
@@ -1059,6 +1059,62 @@
                 "description" : "Total amount of pages"
               }
             }
+          }
+        }
+      }
+    },
+    "/resources/{resource}/versions/latest" : {
+      "get" : {
+        "tags" : [ "resources" ],
+        "summary" : "Latest Resource Version",
+        "description" : "Get the latest resource version\n",
+        "parameters" : [ {
+          "name" : "resource",
+          "in" : "path",
+          "description" : "Resource ID",
+          "required" : true,
+          "type" : "number"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/ResourceVersion"
+            }
+          },
+          "404" : {
+            "description" : "Requested object not found"
+          }
+        }
+      }
+    },
+    "/resources/{resource}/versions/{version}" : {
+      "get" : {
+        "tags" : [ "resources" ],
+        "summary" : "Resource Version",
+        "description" : "Get a specific resource version by its ID\n",
+        "parameters" : [ {
+          "name" : "resource",
+          "in" : "path",
+          "description" : "Resource ID",
+          "required" : true,
+          "type" : "number"
+        }, {
+          "name" : "version",
+          "in" : "path",
+          "description" : "Version ID",
+          "required" : true,
+          "type" : "number"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/ResourceVersion"
+            }
+          },
+          "404" : {
+            "description" : "Requested object not found"
           }
         }
       }
