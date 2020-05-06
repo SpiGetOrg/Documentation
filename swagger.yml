@@ -333,7 +333,11 @@ paths:
         - $ref: '#/parameters/fieldsParam'
       responses:
         '200':
-          $ref: '#/definitions/ResourceUpdate'
+          description: OK
+          schema:
+            $ref: '#/definitions/ResourceUpdate'
+        '404':
+          $ref: '#/responses/notFound'
   '/resources/{resource}/reviews':
     get:
       tags:
