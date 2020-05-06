@@ -990,6 +990,57 @@
         }
       }
     },
+    "/resources/{resource}/updates/latest" : {
+      "get" : {
+        "tags" : [ "resources" ],
+        "summary" : "Latest Resource Update",
+        "description" : "Get the latest resource update\n",
+        "parameters" : [ {
+          "name" : "resource",
+          "in" : "path",
+          "description" : "Resource ID",
+          "required" : true,
+          "type" : "number"
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "description" : "Size of the returned array",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page index",
+          "required" : false,
+          "type" : "number",
+          "format" : "integer"
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Field to sort by. (Use a +/- prefix for ascending/descending order)",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to return, separated by commas",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/ResourceUpdate"
+            }
+          },
+          "404" : {
+            "description" : "Requested object not found"
+          }
+        }
+      }
+    },
     "/resources/{resource}/versions" : {
       "get" : {
         "tags" : [ "resources" ],
