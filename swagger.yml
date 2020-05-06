@@ -239,7 +239,7 @@ paths:
           type: number
           description: Version ID
           in: path
-          require: true
+          required: true
       responses:
         '200':
           description: OK
@@ -314,6 +314,26 @@ paths:
       responses:
         '200':
           $ref: '#/responses/updateArray'
+  '/resources/{resource}/updates/latest':
+    get:
+      tags:
+        - resources
+      summary: Latest Resource Update
+      description: |
+        Get the latest resource update
+      parameters:
+        - name: resource
+          type: number
+          description: Resource ID
+          in: path
+          required: true
+        - $ref: '#/parameters/sizeParam'
+        - $ref: '#/parameters/pageParam'
+        - $ref: '#/parameters/sortParam'
+        - $ref: '#/parameters/fieldsParam'
+      responses:
+        '200':
+          $ref: '#/definitions/ResourceUpdate'
   '/resources/{resource}/reviews':
     get:
       tags:
