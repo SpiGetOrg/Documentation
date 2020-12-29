@@ -10,7 +10,7 @@ info:
     url: 'https://inventivetalent.org/contact'
     email: info@inventivetalent.org
   description: |
-    Documentation for Spiget  
+    Documentation for Spiget
     Spiget is an API to quickly and easily get information about Spigot plugins, resources and authors
 schemes:
   - https
@@ -149,7 +149,7 @@ paths:
       parameters:
         - name: resource
           type: number
-          description: Resource ID 
+          description: Resource ID
           in: path
           required: true
       responses:
@@ -232,7 +232,7 @@ paths:
       parameters:
         - name: resource
           type: number
-          description: Resource ID 
+          description: Resource ID
           in: path
           required: true
         - name: version
@@ -246,7 +246,7 @@ paths:
           schema:
             $ref: '#/definitions/ResourceVersion'
         '404':
-          $ref: '#/responses/notFound'        
+          $ref: '#/responses/notFound'
   '/resources/{resource}/versions/latest':
     get:
       tags:
@@ -257,7 +257,7 @@ paths:
       parameters:
         - name: resource
           type: number
-          description: Resource ID 
+          description: Resource ID
           in: path
           required: true
       responses:
@@ -266,7 +266,7 @@ paths:
           schema:
             $ref: '#/definitions/ResourceVersion'
         '404':
-          $ref: '#/responses/notFound'        
+          $ref: '#/responses/notFound'
   '/resources/{resource}/versions/{version}/download':
     get:
       tags:
@@ -804,6 +804,10 @@ definitions:
         type: number
         format: integer
         description: Version ID
+        deprecated: true
+      uuid:
+        type: string
+        description: Version UUID
       name:
         type: string
         description: Version name (e.g. v1.0)
