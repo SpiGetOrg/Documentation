@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "Documentation for Spiget  \nSpiget is an API to quickly and easily get information about Spigot plugins, resources and authors\n",
+    "description" : "Documentation for Spiget\nSpiget is an API to quickly and easily get information about Spigot plugins, resources and authors\n",
     "version" : "2.0",
     "title" : "Spiget",
     "contact" : {
@@ -1628,6 +1628,10 @@
           "type" : "number",
           "format" : "integer",
           "description" : "Version ID"
+        },
+        "uuid" : {
+          "type" : "string",
+          "description" : "Version UUID"
         },
         "name" : {
           "type" : "string",
