@@ -1589,7 +1589,7 @@
       "properties" : {
         "type" : {
           "type" : "string",
-          "description" : "File extension (.jar, .zip, .sk)"
+          "description" : "File extension (.jar, .zip, .sk) or \"external\""
         },
         "size" : {
           "type" : "number",
@@ -1603,6 +1603,10 @@
         "url" : {
           "type" : "string",
           "description" : "Relative URL to the file"
+        },
+        "externalUrl" : {
+          "type" : "string",
+          "description" : "URL of external downloads"
         }
       },
       "title" : "Resource File"
