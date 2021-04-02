@@ -816,7 +816,7 @@
       "get" : {
         "tags" : [ "resources" ],
         "summary" : "Resource Download",
-        "description" : "Download a resource\n",
+        "description" : "Download a resource\nThe `external` field of a resource should be checked before downloading, to not receive any unexpected data\n",
         "parameters" : [ {
           "name" : "resource",
           "in" : "path",
