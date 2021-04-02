@@ -816,7 +816,7 @@
       "get" : {
         "tags" : [ "resources" ],
         "summary" : "Resource Download",
-        "description" : "Download a resource\nThe `external` field of a resource should be checked before downloading, to not receive any unexpected data\n",
+        "description" : "Download a resource\nThis either redirects to spiget's CDN server (cdn.spiget.org) for a direct download of files hosted on spigotmc.org or to the URL of externally hosted resources\nThe `external` field of a resource should be checked before downloading, to not receive any unexpected data\n",
         "parameters" : [ {
           "name" : "resource",
           "in" : "path",
@@ -825,18 +825,8 @@
           "type" : "number"
         } ],
         "responses" : {
-          "200" : {
-            "description" : "File found",
-            "headers" : {
-              "Content-Type" : {
-                "type" : "string",
-                "description" : "Content type for the resource file (applicaation/octet-stream if unknown)"
-              },
-              "Content-Disposition" : {
-                "type" : "string",
-                "description" : "Download information, including the file name"
-              }
-            }
+          "302" : {
+            "description" : "File found\nRedirect to the file direct download OR the url of externally hosted resources\n"
           },
           "404" : {
             "description" : "Resource not found / File not Found"
