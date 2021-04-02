@@ -184,6 +184,7 @@ paths:
       summary: Resource Download
       description: |
         Download a resource
+        The `external` field of a resource should be checked before downloading, to not receive any unexpected data
       parameters:
         - name: resource
           type: number
