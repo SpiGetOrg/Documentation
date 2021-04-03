@@ -197,6 +197,10 @@ paths:
           description: |
             File found
             Redirect to the file direct download OR the url of externally hosted resources
+          headers:
+            X-Spiget-File-Source:
+              type: string
+              description: File source, either `cdn` or `external`
         '404':
           description: Resource not found / File not Found
   '/resources/{resource}/versions':
