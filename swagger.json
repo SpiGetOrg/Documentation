@@ -826,7 +826,13 @@
         } ],
         "responses" : {
           "302" : {
-            "description" : "File found\nRedirect to the file direct download OR the url of externally hosted resources\n"
+            "description" : "File found\nRedirect to the file direct download OR the url of externally hosted resources\n",
+            "headers" : {
+              "X-Spiget-File-Source" : {
+                "type" : "string",
+                "description" : "File source, either `cdn` or `external`"
+              }
+            }
           },
           "404" : {
             "description" : "Resource not found / File not Found"
