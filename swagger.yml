@@ -770,6 +770,10 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/IdReference'
+      description:
+        description: Base64-encoded description HTML
+      documentation:
+        description: Base64-encoded documentation HTML (from the Documentation tab)
   ResourceFile:
     title: Resource File
     type: object
