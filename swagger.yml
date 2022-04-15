@@ -755,6 +755,24 @@ definitions:
       currency:
         type: string
         description: Price Currency of the resource (only if the resource is premium)
+      author:
+        type: object
+        properties:
+          id: 
+            type: number
+      category:
+        type: object
+        properties:
+          id:
+            type: number
+      version:
+        type: object
+        properties:
+          id: 
+            type: number
+          uuid:
+            type: string
+            format: uuid
       reviews:
         description: List of review IDs on this resource - only present if directly requesting the resource
         type: array
