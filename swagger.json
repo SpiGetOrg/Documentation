@@ -1585,6 +1585,12 @@
           "items" : {
             "$ref" : "#/definitions/IdReference"
           }
+        },
+        "sourceCodeLink" : {
+          "type" : "string"
+        },
+        "donationLink" : {
+          "type" : "string"
         }
       },
       "title" : "Resource"
