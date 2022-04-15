@@ -792,6 +792,10 @@ definitions:
         description: Base64-encoded description HTML
       documentation:
         description: Base64-encoded documentation HTML (from the Documentation tab)
+      sourceCodeLink:
+        type: string
+      donationLink:
+        type: string
   ResourceFile:
     title: Resource File
     type: object
