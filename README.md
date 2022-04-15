@@ -1,7 +1,7 @@
 # Documentation
 Auto-Generated swagger.io documentation for Spiget
 
-https://swagger.spiget.org
+https://spiget.org/documentation
 
 ## Contributing
 To edit the documentation website, simply edit the [**swagger.yml** File](https://github.com/SpiGetOrg/Documentation/blob/master/swagger.yml).
