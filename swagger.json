@@ -1556,6 +1556,15 @@
           "type" : "string",
           "description" : "Price Currency of the resource (only if the resource is premium)"
         },
+        "author" : {
+          "$ref" : "#/definitions/Resource_author"
+        },
+        "category" : {
+          "$ref" : "#/definitions/Resource_author"
+        },
+        "version" : {
+          "$ref" : "#/definitions/Resource_version"
+        },
         "reviews" : {
           "type" : "array",
           "description" : "List of review IDs on this resource - only present if directly requesting the resource",
@@ -1907,6 +1916,24 @@
           "type" : "number",
           "format" : "integer",
           "description" : "Amount of failed connections"
+        }
+      }
+    },
+    "Resource_author" : {
+      "properties" : {
+        "id" : {
+          "type" : "number"
+        }
+      }
+    },
+    "Resource_version" : {
+      "properties" : {
+        "id" : {
+          "type" : "number"
+        },
+        "uuid" : {
+          "type" : "string",
+          "format" : "uuid"
         }
       }
     }
