@@ -699,194 +699,192 @@ definitions:
   Resource:
     title: Resource
     type: object
+    description: Main Resource model.
     properties:
       id:
         type: number
         format: integer
-        description: Id of the Resource
+        description: Id of the Resource.
       name:
         type: string
-        description: Name of the Resource
+        description: Name of the Resource.
       tag:
         type: string
-        description: Tag line of the Resource
+        description: Tag line of the Resource.
       contributors:
         type: string
-        description: Contributors
+        description: Contributors of the Resource.
       likes:
         type: number
         format: integer
-        description: Number of likes
+        description: Number of likes.
       file:
         $ref: '#/definitions/ResourceFile'
       testedVersions:
         type: array
+        description: List with Tested Versions of the Resource.
         items:
           type: string
       links:
         type: object
-        description: Map of external and custom links in the resource description
+        description: Map of external and custom links in the resource description.
       rating:
         $ref: '#/definitions/ResourceRating'
       releaseDate:
         type: number
         format: long
-        description: Release timestamp
+        description: Release timestamp.
       updateDate:
         type: number
         format: long
-        description: Update timestamp
+        description: Update timestamp.
       downloads:
         type: number
         format: integer
-        description: Amount of downloads
+        description: Amount of downloads.
       external:
         type: boolean
-        description: Whether this resource is external (not hosted on SpigotMC.org)
+        description: Whether this resource is external (not hosted on SpigotMC.org).
       icon:
         $ref: '#/definitions/Icon'
       premium:
         type: boolean
-        description: Whether the resource is a premium resource^
+        description: Whether the resource is a premium resource.
       price:
         type: number
         format: double
-        description: Price of the resource (only if the resource is premium)
+        description: Price of the resource (only if the resource is premium).
       currency:
         type: string
-        description: Price Currency of the resource (only if the resource is premium)
+        description: Price Currency of the resource (only if the resource is premium).
       author:
-        type: object
-        properties:
-          id: 
-            type: number
+        $ref: '#/definitions/IdReference'
       category:
-        type: object
-        properties:
-          id:
-            type: number
+        $ref: '#/definitions/IdReference'
       version:
-        type: object
-        properties:
-          id: 
-            type: number
-          uuid:
-            type: string
-            format: uuid
+        $ref: '#/definitions/IdAndUUIDReference'
       reviews:
-        description: List of review IDs on this resource - only present if directly requesting the resource
+        description: List of review IDs on this resource - only present if directly requesting the resource.
         type: array
         items:
           $ref: '#/definitions/IdReference'
       versions:
-        description: List of version IDs of this resource - only present if directly requesting the resource
+        description: List of version IDs of this resource - only present if directly requesting the resource.
         type: array
         items:
           $ref: '#/definitions/IdReference'
       updates:
-        description: List of update IDs of this resource - only present if directly requesting the resource
+        description: List of update IDs of this resource - only present if directly requesting the resource.
         type: array
         items:
           $ref: '#/definitions/IdReference'
       description:
-        description: Base64-encoded description HTML
+        description: Base64-encoded description HTML.
       documentation:
-        description: Base64-encoded documentation HTML (from the Documentation tab)
+        description: Base64-encoded documentation HTML (from the Documentation tab).
       sourceCodeLink:
         type: string
+        description: Source Code link of the Resource.
       donationLink:
         type: string
+        description: Donation link of the Resource.
   ResourceFile:
     title: Resource File
+    description: Model of a Resource File.
     type: object
     properties:
       type:
         type: string
-        description: 'File extension (.jar, .zip, .sk) or "external"'
+        description: 'File extension (.jar, .zip, .sk) or "external".'
       size:
         type: number
         format: float
-        description: File size
+        description: File size.
       sizeUnit:
         type: string
-        description: 'File size-unit (KB, MB, GB)'
+        description: 'File size-unit (KB, MB, GB).'
       url:
         type: string
-        description: Relative URL to the file
+        description: Relative URL to the file.
       externalUrl:
         type: string
-        description: URL of external downloads
+        description: URL of external downloads.
   Icon:
     title: Resource Icon / Author Avatar
+    description: Model for Recource Icon or Author Avatar.
     type: object
     properties:
       url:
         type: string
-        description: Relative URL to the image
+        description: Relative URL to the image.
       data:
         type: string
-        description: Base64-Encoded image data
+        description: Base64-Encoded image data.
   ResourceVersion:
     title: Resource Version
+    description: Model for a Resource Version.
     type: object
     properties:
       id:
         type: number
         format: integer
-        description: Version ID
+        description: Version ID.
         deprecated: true
       uuid:
         type: string
-        description: Version UUID
+        description: Version UUID.
       name:
         type: string
-        description: Version name (e.g. v1.0)
+        description: Version name (e.g. v1.0).
       releaseDate:
         type: number
         format: long
-        description: Timestamp of the version's release date
+        description: Timestamp of the version's release date.
       downloads:
         type: number
         format: integer
-        description: Amount of downloads
+        description: Amount of downloads.
       rating:
         $ref: '#/definitions/ResourceRating'
   ResourceUpdate:
     title: Resource Update
+    description: Model for a Resource Update.
     type: object
     properties:
       id:
         type: number
         format: integer
-        description: Update ID
+        description: Update ID.
       title:
         type: string
-        description: Update title
+        description: Update title.
       description:
         type: string
-        description: Base64-Encoded description of the update
+        description: Base64-Encoded description of the update.
       date:
         type: number
         format: long
-        description: Update timestamp
+        description: Update timestamp.
       likes:
         type: number
         format: integer
-        description: Amount of likes for this update
+        description: Amount of likes for this update.
   ResourceRating:
     title: Resource Rating
+    description: Model for a Resource Rating.
     type: object
     properties:
       count:
         type: number
         format: integer
-        description: Number of ratings
+        description: Number of ratings.
       average:
         type: number
         format: float
-        description: Average rating
+        description: Average rating.
   ResourceReview:
     title: Resource Review
+    description: Model for a Resource Review.
     type: object
     properties:
       author:
@@ -895,41 +893,43 @@ definitions:
         $ref: '#/definitions/ResourceRating'
       message:
         type: string
-        description: Base64-Encoded Review message
+        description: Base64-Encoded Review message.
       responseMessage:
         type: string
-        description: Base64-Encoded message the author responded with
+        description: Base64-Encoded message the author responded with.
       version:
         type: string
-        description: Version name the review was posted for
+        description: Version name the review was posted for.
       date:
         type: number
         format: long
-        description: Review timestamp
+        description: Review timestamp.
   Author:
     title: Author
+    description: Model for an Author.
     type: object
     properties:
       id:
         type: number
         format: integer
-        description: Id of the author
+        description: Id of the author.
       name:
         type: string
-        description: Author name
+        description: Author name.
       icon:
         $ref: '#/definitions/Icon'
   Category:
     title: Category
+    description: Model for a Category.
     type: object
     properties:
       id:
         type: number
         format: integer
-        description: Category ID
+        description: Category ID.
       name:
         type: string
-        description: Category name
+        description: Category name.
   IdReference:
     title: Id-Reference to another object
     type: object
@@ -937,6 +937,18 @@ definitions:
       id:
         type: number
         format: integer
+        description: ID of the Another Object.
+  IdAndUUIDReference:
+    title: Id and UUID Reference to another object
+    type: object
+    properties:
+      id:
+        type: number
+        format: integer
+        description: ID of the Another Object.
+      uuid:
+        type: string
+        description: UUID of the Another Object.
 parameters:
   sizeParam:
     name: size
