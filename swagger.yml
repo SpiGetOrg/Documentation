@@ -400,7 +400,7 @@ paths:
         - $ref: '#/parameters/fieldsParam'
       responses:
         '200':
-          $ref: '#/responses/resourceArray'
+          $ref: '#/responses/resourceForVersionArray'
   /authors:
     get:
       tags:
@@ -904,6 +904,21 @@ definitions:
         type: number
         format: long
         description: Review timestamp.
+  ResourceForVersion:
+    title: Resource For Version
+    description: Model for a Resource For Version.
+    type: object
+    properties:
+      id:
+        $ref: '#/definitions/IdReference'
+      name:
+        type: string
+        description: Name of the Resource.
+      testedVersions:
+        type: array
+        description: List with Tested Versions of the Resource.
+        items:
+          type: string
   Author:
     title: Author
     description: Model for an Author.
@@ -983,6 +998,40 @@ responses:
       type: array
       items:
         $ref: '#/definitions/Resource'
+    headers:
+      X-Page-Sort:
+        description: Field the elements are sorted by
+        type: string
+      X-Page-Order:
+        description: Sort order
+        type: integer
+      X-Page-Size:
+        description: Number of elements on the current page
+        type: integer
+      X-Page-Index:
+        description: Current page index
+        type: integer
+      X-Page-Count:
+        description: Total amount of pages
+        type: integer
+  resourceForVersionArray:
+    description: Resource For Version Array
+    schema:
+      type: object
+      properties:
+        check:
+          type: array
+          description: Values passed to version parameter
+          items:
+            type: string
+        method:
+          type: string
+          description: Value passed to method parameter
+        match:
+          type: array
+          description: Results of fetch
+          items:
+            $ref: '#/definitions/ResourceForVersion'
     headers:
       X-Page-Sort:
         description: Field the elements are sorted by
