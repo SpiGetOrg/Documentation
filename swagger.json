@@ -1485,37 +1485,38 @@
         "id" : {
           "type" : "number",
           "format" : "integer",
-          "description" : "Id of the Resource"
+          "description" : "Id of the Resource."
         },
         "name" : {
           "type" : "string",
-          "description" : "Name of the Resource"
+          "description" : "Name of the Resource."
         },
         "tag" : {
           "type" : "string",
-          "description" : "Tag line of the Resource"
+          "description" : "Tag line of the Resource."
         },
         "contributors" : {
           "type" : "string",
-          "description" : "Contributors"
+          "description" : "Contributors of the Resource."
         },
         "likes" : {
           "type" : "number",
           "format" : "integer",
-          "description" : "Number of likes"
+          "description" : "Number of likes."
         },
         "file" : {
           "$ref" : "#/definitions/ResourceFile"
         },
         "testedVersions" : {
           "type" : "array",
+          "description" : "List with Tested Versions of the Resource.",
           "items" : {
             "type" : "string"
           }
         },
         "links" : {
           "type" : "object",
-          "description" : "Map of external and custom links in the resource description",
+          "description" : "Map of external and custom links in the resource description.",
           "properties" : { }
         },
         "rating" : {
@@ -1524,117 +1525,122 @@
         "releaseDate" : {
           "type" : "number",
           "format" : "long",
-          "description" : "Release timestamp"
+          "description" : "Release timestamp."
         },
         "updateDate" : {
           "type" : "number",
           "format" : "long",
-          "description" : "Update timestamp"
+          "description" : "Update timestamp."
         },
         "downloads" : {
           "type" : "number",
           "format" : "integer",
-          "description" : "Amount of downloads"
+          "description" : "Amount of downloads."
         },
         "external" : {
           "type" : "boolean",
-          "description" : "Whether this resource is external (not hosted on SpigotMC.org)"
+          "description" : "Whether this resource is external (not hosted on SpigotMC.org)."
         },
         "icon" : {
           "$ref" : "#/definitions/Icon"
         },
         "premium" : {
           "type" : "boolean",
-          "description" : "Whether the resource is a premium resource^"
+          "description" : "Whether the resource is a premium resource."
         },
         "price" : {
           "type" : "number",
           "format" : "double",
-          "description" : "Price of the resource (only if the resource is premium)"
+          "description" : "Price of the resource (only if the resource is premium)."
         },
         "currency" : {
           "type" : "string",
-          "description" : "Price Currency of the resource (only if the resource is premium)"
+          "description" : "Price Currency of the resource (only if the resource is premium)."
         },
         "author" : {
-          "$ref" : "#/definitions/Resource_author"
+          "$ref" : "#/definitions/IdReference"
         },
         "category" : {
-          "$ref" : "#/definitions/Resource_author"
+          "$ref" : "#/definitions/IdReference"
         },
         "version" : {
-          "$ref" : "#/definitions/Resource_version"
+          "$ref" : "#/definitions/IdAndUUIDReference"
         },
         "reviews" : {
           "type" : "array",
-          "description" : "List of review IDs on this resource - only present if directly requesting the resource",
+          "description" : "List of review IDs on this resource - only present if directly requesting the resource.",
           "items" : {
             "$ref" : "#/definitions/IdReference"
           }
         },
         "versions" : {
           "type" : "array",
-          "description" : "List of version IDs of this resource - only present if directly requesting the resource",
+          "description" : "List of version IDs of this resource - only present if directly requesting the resource.",
           "items" : {
             "$ref" : "#/definitions/IdReference"
           }
         },
         "updates" : {
           "type" : "array",
-          "description" : "List of update IDs of this resource - only present if directly requesting the resource",
+          "description" : "List of update IDs of this resource - only present if directly requesting the resource.",
           "items" : {
             "$ref" : "#/definitions/IdReference"
           }
         },
         "sourceCodeLink" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "Source Code link of the Resource."
         },
         "donationLink" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "Donation link of the Resource."
         }
       },
-      "title" : "Resource"
+      "title" : "Resource",
+      "description" : "Main Resource model."
     },
     "ResourceFile" : {
       "type" : "object",
       "properties" : {
         "type" : {
           "type" : "string",
-          "description" : "File extension (.jar, .zip, .sk) or \"external\""
+          "description" : "File extension (.jar, .zip, .sk) or \"external\"."
         },
         "size" : {
           "type" : "number",
           "format" : "float",
-          "description" : "File size"
+          "description" : "File size."
         },
         "sizeUnit" : {
           "type" : "string",
-          "description" : "File size-unit (KB, MB, GB)"
+          "description" : "File size-unit (KB, MB, GB)."
         },
         "url" : {
           "type" : "string",
-          "description" : "Relative URL to the file"
+          "description" : "Relative URL to the file."
         },
         "externalUrl" : {
           "type" : "string",
-          "description" : "URL of external downloads"
+          "description" : "URL of external downloads."
         }
       },
-      "title" : "Resource File"
+      "title" : "Resource File",
+      "description" : "Model of a Resource File."
     },
     "Icon" : {
       "type" : "object",
       "properties" : {
         "url" : {
           "type" : "string",
-          "description" : "Relative URL to the image"
+          "description" : "Relative URL to the image."
         },
         "data" : {
           "type" : "string",
-          "description" : "Base64-Encoded image data"
+          "description" : "Base64-Encoded image data."
         }
       },
-      "title" : "Resource Icon / Author Avatar"
+      "title" : "Resource Icon / Author Avatar",
+      "description" : "Model for Recource Icon or Author Avatar."
     },
     "ResourceVersion" : {
       "type" : "object",
@@ -1642,31 +1648,32 @@
         "id" : {
           "type" : "number",
           "format" : "integer",
-          "description" : "Version ID"
+          "description" : "Version ID."
         },
         "uuid" : {
           "type" : "string",
-          "description" : "Version UUID"
+          "description" : "Version UUID."
         },
         "name" : {
           "type" : "string",
-          "description" : "Version name (e.g. v1.0)"
+          "description" : "Version name (e.g. v1.0)."
         },
         "releaseDate" : {
           "type" : "number",
           "format" : "long",
-          "description" : "Timestamp of the version's release date"
+          "description" : "Timestamp of the version's release date."
         },
         "downloads" : {
           "type" : "number",
           "format" : "integer",
-          "description" : "Amount of downloads"
+          "description" : "Amount of downloads."
         },
         "rating" : {
           "$ref" : "#/definitions/ResourceRating"
         }
       },
-      "title" : "Resource Version"
+      "title" : "Resource Version",
+      "description" : "Model for a Resource Version."
     },
     "ResourceUpdate" : {
       "type" : "object",
@@ -1674,28 +1681,29 @@
         "id" : {
           "type" : "number",
           "format" : "integer",
-          "description" : "Update ID"
+          "description" : "Update ID."
         },
         "title" : {
           "type" : "string",
-          "description" : "Update title"
+          "description" : "Update title."
         },
         "description" : {
           "type" : "string",
-          "description" : "Base64-Encoded description of the update"
+          "description" : "Base64-Encoded description of the update."
         },
         "date" : {
           "type" : "number",
           "format" : "long",
-          "description" : "Update timestamp"
+          "description" : "Update timestamp."
         },
         "likes" : {
           "type" : "number",
           "format" : "integer",
-          "description" : "Amount of likes for this update"
+          "description" : "Amount of likes for this update."
         }
       },
-      "title" : "Resource Update"
+      "title" : "Resource Update",
+      "description" : "Model for a Resource Update."
     },
     "ResourceRating" : {
       "type" : "object",
@@ -1703,15 +1711,16 @@
         "count" : {
           "type" : "number",
           "format" : "integer",
-          "description" : "Number of ratings"
+          "description" : "Number of ratings."
         },
         "average" : {
           "type" : "number",
           "format" : "float",
-          "description" : "Average rating"
+          "description" : "Average rating."
         }
       },
-      "title" : "Resource Rating"
+      "title" : "Resource Rating",
+      "description" : "Model for a Resource Rating."
     },
     "ResourceReview" : {
       "type" : "object",
@@ -1724,23 +1733,24 @@
         },
         "message" : {
           "type" : "string",
-          "description" : "Base64-Encoded Review message"
+          "description" : "Base64-Encoded Review message."
         },
         "responseMessage" : {
           "type" : "string",
-          "description" : "Base64-Encoded message the author responded with"
+          "description" : "Base64-Encoded message the author responded with."
         },
         "version" : {
           "type" : "string",
-          "description" : "Version name the review was posted for"
+          "description" : "Version name the review was posted for."
         },
         "date" : {
           "type" : "number",
           "format" : "long",
-          "description" : "Review timestamp"
+          "description" : "Review timestamp."
         }
       },
-      "title" : "Resource Review"
+      "title" : "Resource Review",
+      "description" : "Model for a Resource Review."
     },
     "Author" : {
       "type" : "object",
@@ -1748,17 +1758,18 @@
         "id" : {
           "type" : "number",
           "format" : "integer",
-          "description" : "Id of the author"
+          "description" : "Id of the author."
         },
         "name" : {
           "type" : "string",
-          "description" : "Author name"
+          "description" : "Author name."
         },
         "icon" : {
           "$ref" : "#/definitions/Icon"
         }
       },
-      "title" : "Author"
+      "title" : "Author",
+      "description" : "Model for an Author."
     },
     "Category" : {
       "type" : "object",
@@ -1766,24 +1777,41 @@
         "id" : {
           "type" : "number",
           "format" : "integer",
-          "description" : "Category ID"
+          "description" : "Category ID."
         },
         "name" : {
           "type" : "string",
-          "description" : "Category name"
+          "description" : "Category name."
         }
       },
-      "title" : "Category"
+      "title" : "Category",
+      "description" : "Model for a Category."
     },
     "IdReference" : {
       "type" : "object",
       "properties" : {
         "id" : {
           "type" : "number",
-          "format" : "integer"
+          "format" : "integer",
+          "description" : "ID of the Another Object."
         }
       },
       "title" : "Id-Reference to another object"
+    },
+    "IdAndUUIDReference" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "number",
+          "format" : "integer",
+          "description" : "ID of the Another Object."
+        },
+        "uuid" : {
+          "type" : "string",
+          "description" : "UUID of the Another Object."
+        }
+      },
+      "title" : "Id and UUID Reference to another object"
     },
     "inline_response_200_status_fetch_page_item" : {
       "properties" : {
@@ -1922,24 +1950,6 @@
           "type" : "number",
           "format" : "integer",
           "description" : "Amount of failed connections"
-        }
-      }
-    },
-    "Resource_author" : {
-      "properties" : {
-        "id" : {
-          "type" : "number"
-        }
-      }
-    },
-    "Resource_version" : {
-      "properties" : {
-        "id" : {
-          "type" : "number"
-        },
-        "uuid" : {
-          "type" : "string",
-          "format" : "uuid"
         }
       }
     }
