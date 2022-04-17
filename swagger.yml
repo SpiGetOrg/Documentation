@@ -855,6 +855,10 @@ definitions:
         type: number
         format: integer
         description: Update ID.
+      resource:
+        type: number
+        format: integer
+        description: Resource ID.
       title:
         type: string
         description: Update title.
