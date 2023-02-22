@@ -276,7 +276,7 @@ paths:
       description: |
         Download a specific resource version
 
-        Note: This only redirects to the stored download location and might not download a file (i.e. for external resources)
+        Note: This only redirects to the stored download location and might not download a file
       parameters:
         - name: resource
           type: number
@@ -295,6 +295,29 @@ paths:
             Location:
               description: Download location
               type: string
+  '/resources/{resource}/versions/{version}/download/proxy':
+    get:
+      tags:
+        - resources
+      summary: Resource Version Proxy Download
+      description: |
+        Download a specific resource version
+        Attempts to proxy a version download from spigotmc.org
+        Note: this endpoint has a pretty strict rate-limit - cache downloaded versions locally and avoid repeated requests.
+      parameters:
+        - name: resource
+          type: number
+          description: Resource ID
+          in: path
+          required: true
+        - name: version
+          type: string
+          description: Version ID or 'latest'
+          in: path
+          required: true
+      responses:
+        '302':
+          description: Version download
   '/resources/{resource}/updates':
     get:
       tags:
