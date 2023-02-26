@@ -945,6 +945,46 @@ definitions:
         description: Author name.
       icon:
         $ref: '#/definitions/Icon'
+      tities:
+        $ref: '#/definitions/AuthorIdentities'
+  AuthorIdentities:
+    title: Author Identities
+    description: Author nicknames in another social networks. Get dirrect from Spigot profile.
+    type: object
+    properties:
+      aim:
+        type: string
+        description: Outdated messanger.
+      discord:
+        type: string
+        description: Discord of the Author.
+      facebook:
+        type: string
+        description: Facebook of the Author.
+      github:
+        type: string
+        description: GitHub of the Author.
+      gtalk:
+        type: string
+        description: Outdated messanger.
+      icq:
+        type: string
+        description: Outdated messanger.
+      msn:
+        type: string
+        description: Outdated messanger.
+      skype:
+        type: string
+        description: Skype of the Author.
+      twitter:
+        type: string
+        description: Twitter of the Author.
+      yahoo:
+        type: string
+        description: Outdated messanger.
+      youtube:
+        type: string
+        description: YouTube of the Author.
   Category:
     title: Category
     description: Model for a Category.
